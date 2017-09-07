@@ -17,6 +17,8 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import sdgnys.outpostlite.sdgnys.outpostlite.access.StorageAccess;
 import sdgnys.outpostlite.sdgnys.outpostlite.access.database.Database;
@@ -25,6 +27,8 @@ import sdgnys.outpostlite.search.SearchActivity;
 import static sdgnys.outpostlite.Logger.*;
 
 public class MainActivity extends AppCompatActivity {
+	
+	private static final int CHECK_FOR_PACKAGE_FREQUENCY = 700;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +64,13 @@ public class MainActivity extends AppCompatActivity {
 	    });
 		
 	    ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, 1);
+	
+//	    new Timer().scheduleAtFixedRate(new TimerTask() {
+//		    @Override
+//		    public void run() {
+//
+//		    }
+//	    }, /** Delay */ 0, CHECK_FOR_PACKAGE_FREQUENCY);
 	    
 	    log("Launched OutpostLite");
     }

@@ -15,6 +15,7 @@ import android.widget.TextView;
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import sdgnys.outpostlite.sdgnys.outpostlite.access.Callback;
 import sdgnys.outpostlite.sdgnys.outpostlite.access.PackageParser;
@@ -81,6 +82,13 @@ public class ImportActivity extends AppCompatActivity {
 				});
 				
 				setStatus("(3/10) Parsing the package's parcel data...");
+				PackageParser parser = new PackageParser(storage);
+				parser.beginParsing();
+				
+				setStatus("Finished shit.");
+				ArrayList<HashMap<String, Object>> results = parser.getParcels();
+				log("Poop");
+				/**
 				PackageParser parcelDataParser = new PackageParser(
 						storage.getInternalFile("parcel_data.txt"), "~", "|");
 				parcelDataParser.beginParsing(new Callback<Float>() {
@@ -110,10 +118,12 @@ public class ImportActivity extends AppCompatActivity {
 				
 				setStatus("Successfully finished!");
 				showCheckmark();
+				 **/
 			}
 		});
 	}
 	
+	/**
 	private void fillDatabase(Database database, PackageParser parser, DataTable table) {
 		ArrayList<String[]> parcelRecords = parser.getRecords();
 		for (int i = 0; i < parcelRecords.size(); i ++) {
@@ -121,6 +131,7 @@ public class ImportActivity extends AppCompatActivity {
 			database.addRecord(table, parcelRecords.get(i));
 		}
 	}
+	 **/
 	
 	private void showCheckmark() {
 		this.runOnUiThread(new Runnable() {

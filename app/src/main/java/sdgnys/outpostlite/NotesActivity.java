@@ -13,6 +13,8 @@ import org.w3c.dom.Text;
 
 import sdgnys.outpostlite.sdgnys.outpostlite.access.NotesAccess;
 
+import static sdgnys.outpostlite.Logger.log;
+
 public class NotesActivity extends AppCompatActivity {
 	
 	private String SWIS, PRINT_KEY, PARCEL_ID;
@@ -36,14 +38,13 @@ public class NotesActivity extends AppCompatActivity {
 		setText(R.id.PARCEL_ID, PARCEL_ID);
 		setText(R.id.address, address);
 		
-		findViewById(R.id.saveButton).setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				save();
-			}
-		});
-		
 		load();
+	}
+	
+	@Override
+	public void onPause() {
+		super.onPause();
+		save();
 	}
 	
 	private void save() {
