@@ -10,9 +10,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import sdgnys.outpostlite.R;
 import sdgnys.outpostlite.ViewParcel;
+import sdgnys.outpostlite.sdgnys.outpostlite.access.ParcelXmlParser;
+import sdgnys.outpostlite.sdgnys.outpostlite.access.StorageAccess;
 
 import static sdgnys.outpostlite.Logger.log;
 import static sdgnys.outpostlite.search.RowData.*;
@@ -37,15 +40,19 @@ public class SearchActivity extends AppCompatActivity {
 				streetNumber = getIntent().getStringExtra("streetNumber"),
 				streetName = getIntent().getStringExtra("streetName");
 		
+		ParcelXmlParser parser = new ParcelXmlParser(new StorageAccess(this));
+		parser.beginParsing();
+		final ArrayList<HashMap<String, Object>> parcelData = parser.getParcels();
+		
 		// Populate the search terms into an object to be sent to the search program.
 		RowData searchTerms = new RowData();
-		searchTerms.values[LOC_MUNI_NAME] = municipality;
+		searchTerms.values[Loc_Muni_Name] = municipality;
 		searchTerms.values[PRINT_KEY] = taxMapID;
-		searchTerms.values[LOC_ST_NBR] = streetNumber;
-		searchTerms.values[LOC_ST_NAME] = streetName;
+		searchTerms.values[Loc_St_Nbr] = streetNumber;
+		searchTerms.values[Street] = streetName;
 		
 		// Launch a search with the specified terms and get the results.
-		ArrayList<RowData> searchResults = new Search(this, searchTerms).getResults();
+		final ArrayList<RowData> searchResults = new Search(this, searchTerms).getResults();
 		
 		if (searchResults.size() > 0) {
 			// Set the adapter of the ListView to be a search results adapter.
@@ -58,9 +65,13 @@ public class SearchActivity extends AppCompatActivity {
 				public void onItemClick(AdapterView<?> adapterView, View view, int position, long arg3)
 				{
 					Intent intent = new Intent(SearchActivity.this, ViewParcel.class);
-					intent.putExtra("SWIS", getDataFromView(view, R.id.SWIS));
-					intent.putExtra("PRINT_KEY", getDataFromView(view, R.id.PRINT_KEY));
-					intent.putExtra("PARCEL_ID", getDataFromView(view, R.id.PARCEL_ID));
+					
+					int XML_LOCATION =
+							Integer.parseInt(searchResults.get(position).values[RowData.XML_LOCATION]);
+					HashMap<String, Object> parcel = parcelData.get(XML_LOCATION);
+					
+					intent.putExtra("parcelData", parcel);
+					
 					startActivity(intent);
 				}
 			});

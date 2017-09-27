@@ -3,30 +3,22 @@ package sdgnys.outpostlite;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Parcel;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import sdgnys.outpostlite.sdgnys.outpostlite.access.CSVParser;
 import sdgnys.outpostlite.sdgnys.outpostlite.access.Callback;
-import sdgnys.outpostlite.sdgnys.outpostlite.access.PackageParser;
+import sdgnys.outpostlite.sdgnys.outpostlite.access.ParcelXmlParser;
 import sdgnys.outpostlite.sdgnys.outpostlite.access.StorageAccess;
 import sdgnys.outpostlite.sdgnys.outpostlite.access.database.DataTable;
 import sdgnys.outpostlite.sdgnys.outpostlite.access.database.Database;
 import sdgnys.outpostlite.sdgnys.outpostlite.access.database.ImageDataTable;
 import sdgnys.outpostlite.sdgnys.outpostlite.access.database.ParcelDataTable;
-
-import static sdgnys.outpostlite.Logger.log;
-import static sdgnys.outpostlite.Logger.logI;
 
 public class ImportActivity extends AppCompatActivity {
 	
@@ -82,24 +74,11 @@ public class ImportActivity extends AppCompatActivity {
 				});
 				
 				setStatus("(3/10) Parsing the package's parcel data...");
-				PackageParser parser = new PackageParser(storage);
-				parser.beginParsing();
-				
-				setStatus("Finished shit.");
-				ArrayList<HashMap<String, Object>> results = parser.getParcels();
-				log("Poop");
-				/**
-				PackageParser parcelDataParser = new PackageParser(
-						storage.getInternalFile("parcel_data.txt"), "~", "|");
-				parcelDataParser.beginParsing(new Callback<Float>() {
-					@Override
-					public void callback(Float data) {
-						setPercentLoaded(data);
-					}
-				});
+				ParcelXmlParser parcelXmlParser = new ParcelXmlParser(storage);
+				parcelXmlParser.beginParsing();
 				
 				setStatus("(4/10) Parsing the package's image data...");
-				PackageParser imageDataParser = new PackageParser(
+				CSVParser imageDataParser = new CSVParser(
 						storage.getInternalFile("image_data.txt"), "|", "\n");
 				imageDataParser.beginParsing(new Callback<Float>() {
 					@Override
@@ -108,30 +87,48 @@ public class ImportActivity extends AppCompatActivity {
 					}
 				});
 				
-				database.resetDatabase(database.getWritableDatabase());
 				
 				setStatus("(5/10) Inserting package's parcel data into database...");
-				fillDatabase(database, parcelDataParser, new ParcelDataTable());
+				database.resetDatabase(database.getWritableDatabase());
+				
+				fillDatabase(database, parcelXmlParser.getParcels());
 				
 				setStatus("(5/10) Inserting package's image data into database...");
-				fillDatabase(database, imageDataParser, new ImageDataTable());
+				fillImageDatabase(database, imageDataParser, new ImageDataTable());
 				
 				setStatus("Successfully finished!");
 				showCheckmark();
-				 **/
+				
+				database.printDatabase(ParcelDataTable.TABLE_NAME);
 			}
 		});
 	}
 	
-	/**
-	private void fillDatabase(Database database, PackageParser parser, DataTable table) {
+	private void fillDatabase(Database database, ArrayList<HashMap<String, Object>> parcels) {
+		int XML_LOCATION = 0;
+		for (HashMap<String, Object> parcel : parcels) {
+			setPercentLoaded(((float) XML_LOCATION) / parcels.size());
+			database.addRecord(
+					new ParcelDataTable(),
+					(String) parcel.get("SWIS"),
+					(String) parcel.get("PRINT_KEY"),
+					(String) parcel.get("Parcel_Id"),
+					(String) ((HashMap<String, Object>) parcel.get("Location")).get("Loc_St_Nbr"),
+					(String) ((HashMap<String, Object>) parcel.get("Location")).get("Street"),
+					(String) ((HashMap<String, Object>) parcel.get("Location")).get("Loc_Muni_Name"),
+					XML_LOCATION + ""
+					);
+			XML_LOCATION ++;
+		}
+	}
+	
+	private void fillImageDatabase(Database database, CSVParser parser, DataTable table) {
 		ArrayList<String[]> parcelRecords = parser.getRecords();
 		for (int i = 0; i < parcelRecords.size(); i ++) {
 			setPercentLoaded(((float) i) / parcelRecords.size());
 			database.addRecord(table, parcelRecords.get(i));
 		}
 	}
-	 **/
 	
 	private void showCheckmark() {
 		this.runOnUiThread(new Runnable() {

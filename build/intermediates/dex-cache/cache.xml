@@ -2,15 +2,6 @@
 <items version="2" >
 
     <item
-        is-multidex="false"
-        jar="C:\Users\jforce\.android\build-cache\eaae77e446ca737e79bf4579bee4037c9f5d0d1e\output\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="26.0.0"
-        sha1="fef2b3e4b6b1b0e5fe7b69fa137a5fa55a3182ab">
-        <dex dex="C:\Users\jforce\AndroidStudioProjects\OutpostLite\app\build\intermediates\pre-dexed\debug\classes_e4ef7a77dab6bdc7c33f525f9ddd40d4c639797d.jar" />
-    </item>
-    <item
         is-multidex="true"
         jar="C:\Users\jforce\AndroidStudioProjects\OutpostLite\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
         jumboMode="true"
@@ -25,26 +16,8 @@
         jumboMode="true"
         optimize="true"
         revision="26.0.0"
-        sha1="7a39df1ec73ec6b55c51ea650bf9cd5222fbce89">
+        sha1="fb5fd6863898a8d394919370e30202935d652231">
         <dex dex="C:\Users\jforce\AndroidStudioProjects\OutpostLite\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_cf0a891978fcc5f4b05b16dfef19462dc3bc4acd\classes.dex" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\jforce\.android\build-cache\5af21852f9aeb28084dcf7ab1852253115279038\output\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="26.0.0"
-        sha1="8e673cdfadd8f2d98fdb2fda2285c30f6e449782">
-        <dex dex="C:\Users\jforce\AndroidStudioProjects\OutpostLite\app\build\intermediates\pre-dexed\debug\classes_2cd7215c302dc4f4607961e33de728f35982970a.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\jforce\.android\build-cache\987b8e6465964be9064bcfa322bf62e874b7035f\output\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="26.0.0"
-        sha1="b36f30ac5ee5d5214f4b1e2ac49f11889d58e71a">
-        <dex dex="C:\Users\jforce\AndroidStudioProjects\OutpostLite\app\build\intermediates\pre-dexed\debug\classes_e403bb7e27f1604e88cab1819c54f63601ae0832.jar" />
     </item>
 
 </items>

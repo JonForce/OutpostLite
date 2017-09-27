@@ -3,6 +3,7 @@ package sdgnys.outpostlite;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -17,6 +18,7 @@ import android.widget.Toast;
 import java.io.File;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import sdgnys.outpostlite.sdgnys.outpostlite.access.ModFileAccess;
 import sdgnys.outpostlite.sdgnys.outpostlite.access.StorageAccess;
@@ -32,11 +34,10 @@ import static sdgnys.outpostlite.Logger.logE;
  * the Activity that launces the Image Capture Activity and saves images to the internal
  * export directory.
  */
-public class ViewParcel extends AppCompatActivity {
+public class ViewParcel extends ParcelDataActivity {
 	
 	private static final int
-			REQUEST_IMAGE_CAPTURE = 1,
-			FILE_TAG = 0xDEADBEEF;
+			REQUEST_IMAGE_CAPTURE = 1;
 	private static final String CAPTURE_IMAGE_FILE_PROVIDER = "com.sdgnys.outpostlite.fileprovider";
 	
 	/** These constants define the width and height of the thumbnails that the user can scroll through */
@@ -54,21 +55,17 @@ public class ViewParcel extends AppCompatActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_view_parcel);
+		// Update the UI with data about the Parcel we recieved.
+		super.updateUI(parcelData);
 		
 		storage = new StorageAccess(this);
 		modFile = new ModFileAccess(this);
 		
 		// Pull in the input parameters that will be used to identify the parcel.
-		SWIS = getIntent().getStringExtra("SWIS");
-		PRINT_KEY = getIntent().getStringExtra("PRINT_KEY");
-		PARCEL_ID = getIntent().getStringExtra("PARCEL_ID");
+		SWIS = (String) parcelData.get("SWIS");
+		PRINT_KEY = (String) parcelData.get("PRINT_KEY");
+		PARCEL_ID = (String) parcelData.get("Parcel_Id");
 		
-		// Establish a connection to the SQLite database.
-		Database database = new Database(this);
-		// Query it to get the row of data that is this parcel's data.
-		Cursor results = query(database, SWIS, PRINT_KEY, PARCEL_ID);
-		
-		updateUI(results);
 		loadImages();
 		
 		findViewById(R.id.closeButton).setOnClickListener(new View.OnClickListener() {
@@ -106,7 +103,7 @@ public class ViewParcel extends AppCompatActivity {
 				intent.putExtra("SWIS", SWIS);
 				intent.putExtra("PRINT_KEY", PRINT_KEY);
 				intent.putExtra("PARCEL_ID", PARCEL_ID);
-				intent.putExtra("address", "123 fake lane");
+				intent.putExtra("address", (String) parcelData.get("Street"));
 				startActivity(intent);
 			}
 		});
@@ -264,49 +261,6 @@ public class ViewParcel extends AppCompatActivity {
 			// Add the image to the layout.
 			layout.addView(image);
 		}
-	}
-	
-	/** This method updates the user interface using data that is contained in the
-	 * first line of the SQLite cursor. */
-	private void updateUI(Cursor cursor) {
-		if (cursor.getCount() != 1)
-			logE("The query used to get data from the parcel returned " + cursor.getCount() + " results! BAD");
-		
-		cursor.moveToFirst();
-		
-		// For every column in the row,
-		for (int column = 0; column < cursor.getColumnNames().length; column ++) {
-			// Get the column's name.
-			String columnName = cursor.getColumnName(column);
-			// Every field in R.id represents the id of a GUI item.
-			for (Field field : R.id.class.getFields()) {
-				// If that GUI item matches the column name, we want to put column data in it.
-				if (field.getName().equals(columnName)) {
-					// Dynamically get the view of the GUI item.
-					View view = null;
-					try {
-						view = findViewById(field.getInt(null));
-					} catch (IllegalAccessException e) {
-						e.printStackTrace();
-					}
-					// Set the text of this view to have the data from the SQLite result.
-					if (view != null) {
-						((TextView) view).setText(cursor.getString(column));
-					}
-				}
-			}
-		}
-	}
-	
-	/** This method is used to generate the request to get data about a specific parcel. */
-	private Cursor query(Database database, String SWIS, String PRINT_KEY, String PARCEL_ID) {
-		return database.getReadableDatabase().rawQuery(
-				"SELECT * FROM " + ParcelDataTable.TABLE_NAME +
-				" WHERE SWIS = '" + SWIS +
-				"' AND PRINT_KEY = '" + PRINT_KEY +
-				"' AND PARCEL_ID  = '" + PARCEL_ID + "'",
-				null
-		);
 	}
 	
 	/** @rerturn all the images associated with this parcel. */

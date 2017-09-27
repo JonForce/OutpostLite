@@ -17,9 +17,12 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import sdgnys.outpostlite.sdgnys.outpostlite.access.ParcelXmlParser;
 import sdgnys.outpostlite.sdgnys.outpostlite.access.StorageAccess;
 import sdgnys.outpostlite.sdgnys.outpostlite.access.database.Database;
 import sdgnys.outpostlite.search.SearchActivity;

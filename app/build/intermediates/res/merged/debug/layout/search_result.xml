@@ -28,7 +28,7 @@
         app:layout_constraintTop_toTopOf="@+id/SWIS"/>
 
     <TextView
-        android:id="@+id/LOC_ST_NBR"
+        android:id="@+id/Street"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="0dp"
@@ -44,8 +44,8 @@
         android:layout_marginLeft="8dp"
         android:layout_marginTop="0dp"
         android:text="Sherrill"
-        app:layout_constraintLeft_toRightOf="@+id/LOC_ST_NBR"
-        app:layout_constraintTop_toTopOf="@+id/LOC_ST_NBR"/>
+        app:layout_constraintLeft_toRightOf="@+id/Street"
+        app:layout_constraintTop_toTopOf="@+id/Street"/>
 
     <TextView
         android:id="@+id/LOC_MAIL_ST_SUFF"

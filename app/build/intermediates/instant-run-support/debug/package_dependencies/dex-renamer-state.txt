@@ -1,4 +1,4 @@
-#Thu Aug 17 15:24:32 EDT 2017
+#Mon Sep 25 14:08:19 EDT 2017
 file.2=C\:\\Users\\jforce\\AndroidStudioProjects\\OutpostLite\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\classes_20811962e4b9001e5c1dc3090925723c8aeee940\\classes.dex
 base.2=C\:\\Users\\jforce\\AndroidStudioProjects\\OutpostLite\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\classes_20811962e4b9001e5c1dc3090925723c8aeee940
 file.1=C\:\\Users\\jforce\\AndroidStudioProjects\\OutpostLite\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\classes_0a9357183ed7292ffcd273634e84a1c49a5cf7ff\\classes.dex

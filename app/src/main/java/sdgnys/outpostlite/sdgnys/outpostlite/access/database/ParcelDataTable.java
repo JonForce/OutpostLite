@@ -14,10 +14,10 @@ public class ParcelDataTable extends DataTable {
 			"SWIS",
 			"PRINT_KEY",
 			"PARCEL_ID",
-			"LOC_ST_NBR",
-			"LOC_ST_NAME",
-			"LOC_MAIL_ST_SUFF",
-			"LOC_MUNI_NAME"
+			"Loc_St_Nbr",
+			"Street",
+			"Loc_Muni_Name",
+			"XML_LOCATION"
 	},
 	columnDataTypes = new String[] {
 			"char(6)",
@@ -25,8 +25,8 @@ public class ParcelDataTable extends DataTable {
 			"integer",
 			"varchar(10)",
 			"varchar(30)",
-			"char(4)",
-			"varchar(30)"
+			"varchar(30)",
+			"integer"
 	};
 	
 	@Override
