@@ -96,4 +96,5 @@
     <string name="title_activity_options">OptionsActivity</string>
     <string name="title_activity_export">ExportActivity</string>
     <string name="title_activity_notes">NotesActivity</string>
+    <string name="title_activity_improvements">ImprovementsActivity</string>
 </resources>

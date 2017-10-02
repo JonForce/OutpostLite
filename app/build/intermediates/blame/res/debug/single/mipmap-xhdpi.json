@@ -1,5 +1,9 @@
 [
     {
+        "merged": "C:\\Users\\jforce\\AndroidStudioProjects\\OutpostLite\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi\\logo.png",
+        "source": "C:\\Users\\jforce\\AndroidStudioProjects\\OutpostLite\\app\\src\\main\\res\\mipmap-xhdpi\\logo.png"
+    },
+    {
         "merged": "C:\\Users\\jforce\\AndroidStudioProjects\\OutpostLite\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi\\ic_launcher_round.png",
         "source": "C:\\Users\\jforce\\AndroidStudioProjects\\OutpostLite\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher_round.png"
     },

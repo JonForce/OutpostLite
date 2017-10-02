@@ -99,6 +99,11 @@
             android:label="@string/title_activity_notes"
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
+        <activity
+            android:name="sdgnys.outpostlite.improvements.ImprovementsActivity"
+            android:label="@string/title_activity_improvements"
+            android:theme="@style/AppTheme.NoActionBar" >
+        </activity>
 
         <meta-data
             android:name="com.google.android.gms.version"

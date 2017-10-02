@@ -20,6 +20,7 @@ import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import sdgnys.outpostlite.improvements.ImprovementsActivity;
 import sdgnys.outpostlite.sdgnys.outpostlite.access.ModFileAccess;
 import sdgnys.outpostlite.sdgnys.outpostlite.access.StorageAccess;
 import sdgnys.outpostlite.sdgnys.outpostlite.access.database.Database;
@@ -104,6 +105,15 @@ public class ViewParcel extends ParcelDataActivity {
 				intent.putExtra("PRINT_KEY", PRINT_KEY);
 				intent.putExtra("PARCEL_ID", PARCEL_ID);
 				intent.putExtra("address", (String) parcelData.get("Street"));
+				startActivity(intent);
+			}
+		});
+		
+		findViewById(R.id.improvementsButton).setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent(ViewParcel.this, ImprovementsActivity.class);
+				intent.putExtra("improvements", getImprovements());
 				startActivity(intent);
 			}
 		});
@@ -276,5 +286,16 @@ public class ViewParcel extends ParcelDataActivity {
 				images.add(f);
 		
 		return images;
+	}
+	
+	private ArrayList<HashMap<String, Object>> getImprovements() {
+		return
+				((ArrayList<HashMap<String, Object>>)
+				((HashMap<String, Object>)
+				((HashMap<String, Object>)
+				((HashMap<String, Object>) parcelData.get("Sites") )
+				.get("Site") )
+				.get("Improvements") )
+				.get("Improvement") );
 	}
 }

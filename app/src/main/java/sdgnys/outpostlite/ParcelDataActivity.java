@@ -1,5 +1,6 @@
 package sdgnys.outpostlite;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -23,8 +24,6 @@ public abstract class ParcelDataActivity extends AppCompatActivity {
 		
 		parcelData =
 				(HashMap<String, Object>) getIntent().getSerializableExtra("parcelData");
-		
-		
 	}
 	
 	/** This method updates the user interface using the given parcel data. */
@@ -35,23 +34,32 @@ public abstract class ParcelDataActivity extends AppCompatActivity {
 				continue;
 			}
 			
-			for (Field field : R.id.class.getFields()) {
-				// If that GUI item matches the column name, we want to put column data in it.
-				if (field.getName().equals(dataKey)) {
-					// Dynamically get the view of the GUI item.
-					View view = null;
-					try {
-						view = findViewById(field.getInt(null));
-					} catch (IllegalAccessException e) {
-						e.printStackTrace();
-					}
-					
-					// Set the text of this view to have the data from the SQLite result.
-					if (view != null) {
-						((TextView) view).setText((String) data.get(dataKey));
-					}
+			View view = getViewByName(dataKey, this);
+			
+			// Set the text of this view to have the data from the SQLite result.
+			if (view != null) {
+				((TextView) view).setText((String) data.get(dataKey));
+			}
+			
+		}
+	}
+	
+	public static View getViewByName(String name, AppCompatActivity context) {
+		for (Field field : R.id.class.getFields()) {
+			// If that GUI item matches the column name, we want to put column data in it.
+			if (field.getName().equals(name)) {
+				// Dynamically get the view of the GUI item.
+				View view = null;
+				try {
+					view = context.findViewById(field.getInt(null));
+				} catch (IllegalAccessException e) {
+					e.printStackTrace();
 				}
+				
+				return view;
 			}
 		}
+		
+		return null;
 	}
 }

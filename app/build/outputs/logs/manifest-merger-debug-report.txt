@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\jforce\AndroidStudioProjects\OutpostLite\app\src\main\AndroidManifest.xml:2:1-94:12
+ADDED from C:\Users\jforce\AndroidStudioProjects\OutpostLite\app\src\main\AndroidManifest.xml:2:1-99:12
 	package
 		ADDED from C:\Users\jforce\AndroidStudioProjects\OutpostLite\app\src\main\AndroidManifest.xml:3:11-39
 		INJECTED from C:\Users\jforce\AndroidStudioProjects\OutpostLite\app\src\main\AndroidManifest.xml
@@ -36,7 +36,7 @@ ADDED from C:\Users\jforce\AndroidStudioProjects\OutpostLite\app\src\main\Androi
 	android:name
 		ADDED from C:\Users\jforce\AndroidStudioProjects\OutpostLite\app\src\main\AndroidManifest.xml:13:22-78
 application
-ADDED from C:\Users\jforce\AndroidStudioProjects\OutpostLite\app\src\main\AndroidManifest.xml:15:5-92:19
+ADDED from C:\Users\jforce\AndroidStudioProjects\OutpostLite\app\src\main\AndroidManifest.xml:15:5-97:19
 MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\jforce\.android\build-cache\cfd326db6a0921bb166d0286331c88c23a285384\output\AndroidManifest.xml:9:5-20
 MERGED from [com.android.support:design:25.3.1] C:\Users\jforce\.android\build-cache\8702f7664f6704d783fef3516789a29a90580edc\output\AndroidManifest.xml:29:5-20
 MERGED from [com.android.support:appcompat-v7:25.3.1] C:\Users\jforce\.android\build-cache\1bf3ac7b2b370481d5365a81f494b73bf2ea03b1\output\AndroidManifest.xml:29:5-20
@@ -162,6 +162,14 @@ ADDED from C:\Users\jforce\AndroidStudioProjects\OutpostLite\app\src\main\Androi
 		ADDED from C:\Users\jforce\AndroidStudioProjects\OutpostLite\app\src\main\AndroidManifest.xml:90:13-56
 	android:name
 		ADDED from C:\Users\jforce\AndroidStudioProjects\OutpostLite\app\src\main\AndroidManifest.xml:88:13-42
+activity#sdgnys.outpostlite.improvements.ImprovementsActivity
+ADDED from C:\Users\jforce\AndroidStudioProjects\OutpostLite\app\src\main\AndroidManifest.xml:92:9-96:20
+	android:label
+		ADDED from C:\Users\jforce\AndroidStudioProjects\OutpostLite\app\src\main\AndroidManifest.xml:94:13-64
+	android:theme
+		ADDED from C:\Users\jforce\AndroidStudioProjects\OutpostLite\app\src\main\AndroidManifest.xml:95:13-56
+	android:name
+		ADDED from C:\Users\jforce\AndroidStudioProjects\OutpostLite\app\src\main\AndroidManifest.xml:93:13-62
 uses-sdk
 INJECTED from C:\Users\jforce\AndroidStudioProjects\OutpostLite\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\jforce\.android\build-cache\cfd326db6a0921bb166d0286331c88c23a285384\output\AndroidManifest.xml:5:5-7:41

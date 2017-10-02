@@ -184,6 +184,10 @@
         "source": "C:\\Users\\jforce\\.android\\build-cache\\1bf3ac7b2b370481d5365a81f494b73bf2ea03b1\\output\\res\\layout\\abc_list_menu_item_layout.xml"
     },
     {
+        "merged": "C:\\Users\\jforce\\AndroidStudioProjects\\OutpostLite\\app\\build\\intermediates\\res\\merged\\debug\\layout\\content_improvements.xml",
+        "source": "C:\\Users\\jforce\\AndroidStudioProjects\\OutpostLite\\app\\src\\main\\res\\layout\\content_improvements.xml"
+    },
+    {
         "merged": "C:\\Users\\jforce\\AndroidStudioProjects\\OutpostLite\\app\\build\\intermediates\\res\\merged\\debug\\layout\\select_dialog_item_material.xml",
         "source": "C:\\Users\\jforce\\.android\\build-cache\\1bf3ac7b2b370481d5365a81f494b73bf2ea03b1\\output\\res\\layout\\select_dialog_item_material.xml"
     },
@@ -236,6 +240,10 @@
         "source": "C:\\Users\\jforce\\.android\\build-cache\\1bf3ac7b2b370481d5365a81f494b73bf2ea03b1\\output\\res\\layout\\support_simple_spinner_dropdown_item.xml"
     },
     {
+        "merged": "C:\\Users\\jforce\\AndroidStudioProjects\\OutpostLite\\app\\build\\intermediates\\res\\merged\\debug\\layout\\improvement.xml",
+        "source": "C:\\Users\\jforce\\AndroidStudioProjects\\OutpostLite\\app\\src\\main\\res\\layout\\improvement.xml"
+    },
+    {
         "merged": "C:\\Users\\jforce\\AndroidStudioProjects\\OutpostLite\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_icon.xml",
         "source": "C:\\Users\\jforce\\.android\\build-cache\\1bf3ac7b2b370481d5365a81f494b73bf2ea03b1\\output\\res\\layout\\abc_list_menu_item_icon.xml"
     },
@@ -258,5 +266,9 @@
     {
         "merged": "C:\\Users\\jforce\\AndroidStudioProjects\\OutpostLite\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_text_input_password_icon.xml",
         "source": "C:\\Users\\jforce\\.android\\build-cache\\8702f7664f6704d783fef3516789a29a90580edc\\output\\res\\layout\\design_text_input_password_icon.xml"
+    },
+    {
+        "merged": "C:\\Users\\jforce\\AndroidStudioProjects\\OutpostLite\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_improvements.xml",
+        "source": "C:\\Users\\jforce\\AndroidStudioProjects\\OutpostLite\\app\\src\\main\\res\\layout\\activity_improvements.xml"
     }
 ]

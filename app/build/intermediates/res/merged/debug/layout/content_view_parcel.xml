@@ -648,12 +648,12 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="29dp"
         android:text="Dimensions"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="18sp"
-        android:textStyle="bold|italic"
-        app:layout_constraintHorizontal_bias="0.349"
+        android:textStyle="bold"
+        app:layout_constraintHorizontal_bias="0.402"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@+id/guideline8"
         app:layout_constraintTop_toBottomOf="@+id/textView56"/>
@@ -939,5 +939,16 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/notesButton"
         app:srcCompat="@android:drawable/btn_dialog"/>
+
+    <Button
+        android:id="@+id/improvementsButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="8dp"
+        android:text="Improvements"
+        android:visibility="visible"
+        app:layout_constraintLeft_toRightOf="@+id/notesButton"
+        app:layout_constraintTop_toTopOf="parent"/>
 
 </android.support.constraint.ConstraintLayout>
