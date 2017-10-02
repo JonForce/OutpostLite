@@ -847,6 +847,7 @@
     <string name="title_activity_improvements">ImprovementsActivity</string>
     <string name="title_activity_notes">NotesActivity</string>
     <string name="title_activity_options">OptionsActivity</string>
+    <string name="title_activity_sale">SaleActivity</string>
     <string name="title_activity_search_results">SearchResultsActivity</string>
     <string name="title_activity_view_parcel">ViewParcel</string>
     <style name="AlertDialog.AppCompat" parent="Base.AlertDialog.AppCompat"/>

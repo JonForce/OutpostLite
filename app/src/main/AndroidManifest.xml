@@ -94,6 +94,11 @@
             android:label="@string/title_activity_improvements"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
+        <activity
+            android:name=".SaleActivity"
+            android:label="@string/title_activity_sale"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
     </application>
 
 </manifest>

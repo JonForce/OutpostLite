@@ -117,6 +117,15 @@ public class ViewParcel extends ParcelDataActivity {
 				startActivity(intent);
 			}
 		});
+		
+		findViewById(R.id.saleButton).setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent(ViewParcel.this, SaleActivity.class);
+				intent.putExtra("parcelData", getSale());
+				startActivity(intent);
+			}
+		});
 	}
 	
 	@Override
@@ -297,5 +306,12 @@ public class ViewParcel extends ParcelDataActivity {
 				.get("Site") )
 				.get("Improvements") )
 				.get("Improvement") );
+	}
+	
+	private HashMap<String, Object> getSale() {
+		return  ((HashMap<String, Object>)
+				((HashMap<String, Object>)
+				parcelData.get("Sales"))
+				.get("Sale"));
 	}
 }

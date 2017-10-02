@@ -951,4 +951,14 @@
         app:layout_constraintLeft_toRightOf="@+id/notesButton"
         app:layout_constraintTop_toTopOf="parent"/>
 
+    <Button
+        android:id="@+id/saleButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="8dp"
+        android:text="Sale Info"
+        app:layout_constraintLeft_toRightOf="@+id/improvementsButton"
+        app:layout_constraintTop_toTopOf="parent"/>
+
 </android.support.constraint.ConstraintLayout>

@@ -3,21 +3,21 @@
 
     <item
         is-multidex="true"
+        jar="C:\Users\jforce\AndroidStudioProjects\OutpostLite\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.0"
+        sha1="1968cbb255112b860689a510b3ad9374c9661340">
+        <dex dex="C:\Users\jforce\AndroidStudioProjects\OutpostLite\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_cf0a891978fcc5f4b05b16dfef19462dc3bc4acd\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
         jar="C:\Users\jforce\AndroidStudioProjects\OutpostLite\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
         jumboMode="true"
         optimize="true"
         revision="26.0.0"
         sha1="3be78ebc2706b2e1fe2f12d5726887a92d6c183b">
         <dex dex="C:\Users\jforce\AndroidStudioProjects\OutpostLite\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_ba23e2fc492ae1527722b2acfa14df81da34e1e3\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\jforce\AndroidStudioProjects\OutpostLite\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="26.0.0"
-        sha1="6bfe6b3d62647566347640584cbe6ebd96297461">
-        <dex dex="C:\Users\jforce\AndroidStudioProjects\OutpostLite\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_cf0a891978fcc5f4b05b16dfef19462dc3bc4acd\classes.dex" />
     </item>
 
 </items>
