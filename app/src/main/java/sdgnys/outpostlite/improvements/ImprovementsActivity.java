@@ -21,9 +21,11 @@ public class ImprovementsActivity extends AppCompatActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_improvements);
 		
+		// Get the improvement data from the intent.
 		ArrayList<HashMap<String, Object>> improvements =
 				(ArrayList<HashMap<String, Object>>) getIntent().getSerializableExtra("improvements");
 		
+		// Use the improvements data.
 		getListView().setAdapter(new ImprovementsAdapter(this, R.layout.improvement, improvements));
 	}
 	

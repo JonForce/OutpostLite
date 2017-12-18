@@ -21,9 +21,12 @@ import java.io.IOException;
 /**
  * Created by jforce on 7/27/2017.
  *
+ * DEPRECATED ON 12/18/2017 because it is not currenly used anywhere.
+ *
  * This class is a tool that wraps up the disgusting awful garbage that is the
  * Google Drive android API into a friendly, intelligent system.
  */
+@Deprecated
 public class GoogleDrive {
 	
 	private GoogleApiClient driveClient;

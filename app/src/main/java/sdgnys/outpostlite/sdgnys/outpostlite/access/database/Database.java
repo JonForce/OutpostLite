@@ -22,6 +22,10 @@ public class Database extends SQLiteOpenHelper {
 		super(context, NAME, null, VERSION);
 	}
 	
+	/** Print all of the data in the specified table. This method also conviniently prints out
+	 * the column headers.
+	 * @param tableName The name of the table you want to print. Ex : ParcelDataTable.TABLE_NAME
+	 */
 	public void printDatabase(String tableName) {
 		SQLiteDatabase database = getReadableDatabase();
 		

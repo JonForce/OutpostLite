@@ -255,6 +255,7 @@ public class StorageAccess {
 		}
 	}
 	
+	/** This method unzips a file into an output directory. It was taken from stack overflow I think */
 	private void unzip(File zip, File outputDirectory, Callback<Float> progressCallback)
 	{
 		InputStream is;

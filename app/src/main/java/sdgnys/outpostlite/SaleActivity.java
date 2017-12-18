@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
+/** The activity that shows the user all of the sale information. */
 public class SaleActivity extends ParcelDataActivity {
 	
 	@Override

@@ -16,14 +16,15 @@ import java.io.PrintWriter;
  */
 public class NotesAccess {
 	
-	private final Context context;
 	private final StorageAccess storage;
 	
 	public NotesAccess(AppCompatActivity context) {
-		this.context = context;
+		// Establish a connection to storage.
 		this.storage = new StorageAccess(context);
 	}
 	
+	/** This method will write to the notes for the specified parcel. It overwrites whatever
+	 * is currently there in that notes file. */
 	public void writeNotes(String SWIS, String PRINT_KEY, String PARCEL_ID, String notes) {
 		File file = getNotesFile(SWIS, PRINT_KEY, PARCEL_ID);
 		
@@ -43,10 +44,14 @@ public class NotesAccess {
 		}
 	}
 	
+	/** @return the notes for the specified parcel. */
 	public String getNotes(String SWIS, String PRINT_KEY, String PARCEL_ID) {
+		// Get a reference to where that file should be.
 		File file = getNotesFile(SWIS, PRINT_KEY, PARCEL_ID);
 		
+		// If it doesn't exist,
 		if (!file.exists()) {
+			// Create it and return "".
 			try {
 				file.createNewFile();
 			} catch (IOException e) {
@@ -54,6 +59,7 @@ public class NotesAccess {
 			}
 			return "";
 		} else {
+			// Else we need to read everything in that notes file.
 			try (BufferedReader br = new BufferedReader(new FileReader(file))) {
 				StringBuilder sb = new StringBuilder();
 				String line = br.readLine();
@@ -71,6 +77,7 @@ public class NotesAccess {
 		}
 	}
 	
+	/** @return a reference to the notes file for a specified parcel. The file may or may not exist. */
 	private File getNotesFile(String SWIS, String PRINT_KEY, String PARCEL_ID) {
 		return new File(storage.exportDirectory, "NOTES-FOR_"+SWIS+"_"+PRINT_KEY+"_"+PARCEL_ID+".txt");
 	}

@@ -36,14 +36,17 @@ public class CSVParser {
 		this.file = file;
 	}
 	
+	/** This method returns all of the CSV records. */
 	public ArrayList<String[]> getRecords() {
 		if (records == null)
 			throw new RuntimeException("You must call beginParsing before accessing parsed data.");
+		
 		return records;
 	}
 	
+	/** This method will synchronously launch the parsing of the CSV file. */
 	public void beginParsing(Callback<Float> progressCallback) {
-		records = new ArrayList<String[]>();
+		records = new ArrayList<>();
 		
 		// All this junk just opens the file and begins reading it line by line.
 		FileInputStream is = null;
@@ -54,7 +57,7 @@ public class CSVParser {
 			e.printStackTrace();
 		}
 		reader = new BufferedReader(new InputStreamReader(is));
-		String line = null;
+		String line;
 		try {
 			line = reader.readLine();
 			while (line != null){
