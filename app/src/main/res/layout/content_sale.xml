@@ -10,6 +10,19 @@
     tools:showIn="@layout/activity_sale">
 
     <View
+        android:id="@+id/view10"
+        android:layout_width="0dp"
+        android:layout_height="1dip"
+        android:layout_marginLeft="250dp"
+        android:layout_marginRight="350dp"
+        android:background="#000000"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/textView67"/>
+
+    <View
         android:id="@+id/view4"
         android:layout_width="0dp"
         android:layout_height="1dip"
@@ -88,7 +101,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView32"/>
 
     <View
-        android:id="@+id/view10"
+        android:id="@+id/view7"
         android:layout_width="0dp"
         android:layout_height="1dip"
         android:layout_marginLeft="250dp"
@@ -436,4 +449,26 @@
         android:text="NULL"
         app:layout_constraintLeft_toLeftOf="@+id/guideline21"
         app:layout_constraintTop_toTopOf="@+id/textView42"/>
+
+    <TextView
+        android:id="@+id/textView67"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Price :"
+        android:textColor="@color/colorPrimary"
+        app:layout_constraintLeft_toLeftOf="@+id/guideline13"
+        app:layout_constraintTop_toBottomOf="@+id/view7"/>
+
+    <TextView
+        android:id="@+id/Sale_Price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="16dp"
+        android:text="NULL"
+        app:layout_constraintLeft_toLeftOf="@+id/guideline21"
+        app:layout_constraintTop_toBottomOf="@+id/SaleType"/>
+
 </android.support.constraint.ConstraintLayout>

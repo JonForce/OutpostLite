@@ -8,8 +8,11 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -32,11 +35,14 @@ import static sdgnys.outpostlite.Logger.*;
 public class MainActivity extends AppCompatActivity {
 	
 	private static final int CHECK_FOR_PACKAGE_FREQUENCY = 700;
+	
+	private boolean displayedPackageNotice = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+	    getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
 	    
         final ImageButton button = (ImageButton) findViewById(R.id.navigate);
         button.setOnClickListener(new View.OnClickListener() {
@@ -57,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
 				export();
 		    }
 	    });
-	
+		
 	    findViewById(R.id.optionsButton).setOnClickListener(new View.OnClickListener() {
 		    @Override
 		    public void onClick(View v) {
@@ -67,13 +73,25 @@ public class MainActivity extends AppCompatActivity {
 	    });
 		
 	    ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, 1);
-	
-//	    new Timer().scheduleAtFixedRate(new TimerTask() {
-//		    @Override
-//		    public void run() {
-//
-//		    }
-//	    }, /** Delay */ 0, CHECK_FOR_PACKAGE_FREQUENCY);
+		
+	    new Timer().scheduleAtFixedRate(new TimerTask() {
+		    @Override
+		    public void run() {
+			    StorageAccess access = new StorageAccess(MainActivity.this);
+			    if (access.getIncomingPackage() != null)
+				    runOnUiThread(new Runnable() {
+					    @Override
+					    public void run() {
+						    if (!displayedPackageNotice) {
+							    Toast.makeText(MainActivity.this,
+									    "Package is ready to import!",
+									    Toast.LENGTH_LONG).show();
+							    displayedPackageNotice = true;
+						    }
+					    }
+				    });
+		    }
+	    }, /** Delay */ 0, CHECK_FOR_PACKAGE_FREQUENCY);
 	    
 	    log("Launched OutpostLite");
     }

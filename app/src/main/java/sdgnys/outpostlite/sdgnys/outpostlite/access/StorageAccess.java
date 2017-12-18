@@ -221,7 +221,7 @@ public class StorageAccess {
 	
 	/** Gets the incoming package that has been placed in the Download directory by
 	* the desktop application. */
-	private File getIncomingPackage() {
+	public File getIncomingPackage() {
 		// Get the Download directory.
 		File fl = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
 		// For every file in that directory,

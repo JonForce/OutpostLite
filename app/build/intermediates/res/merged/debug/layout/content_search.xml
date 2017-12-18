@@ -51,7 +51,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/guideline5"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.58"/>
+        app:layout_constraintGuide_percent="0.65"/>
 
     <TextView
         android:id="@+id/textView2"
@@ -69,13 +69,13 @@
         android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
         android:layout_marginTop="0dp"
         android:text="Print Key"
         android:textColor="@color/colorPrimary"
         android:textStyle="bold"
-        app:layout_constraintLeft_toRightOf="@+id/textView2"
-        app:layout_constraintTop_toTopOf="@+id/textView2"/>
+        app:layout_constraintTop_toTopOf="@+id/textView2"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="@+id/guideline7"/>
 
     <TextView
         android:id="@+id/textView7"
@@ -100,6 +100,13 @@
         app:layout_constraintLeft_toLeftOf="@+id/guideline5"
         app:layout_constraintTop_toTopOf="@+id/textView7"/>
 
+    <android.support.constraint.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/guideline7"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.15"/>
+
     <ListView
         android:id="@+id/listView"
         android:layout_width="0dp"
@@ -113,22 +120,4 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2"
         app:layout_constraintVertical_bias="0.0"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="0dp"
-        android:layout_marginTop="0dp"
-        android:text="Parcel ID"
-        android:textColor="@color/colorPrimary"
-        android:textStyle="bold"
-        app:layout_constraintLeft_toLeftOf="@+id/guideline7"
-        app:layout_constraintTop_toTopOf="@+id/textView5"/>
-
-    <android.support.constraint.Guideline
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/guideline7"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.23"/>
 </android.support.constraint.ConstraintLayout>

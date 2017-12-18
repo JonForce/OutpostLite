@@ -2,6 +2,7 @@ package sdgnys.outpostlite.search;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +21,9 @@ import static sdgnys.outpostlite.search.RowData.*;
  * Created by jforce on 8/10/2017.
  */
 class SearchResultsAdapter extends ArrayAdapter<RowData> {
+	
+	private static final int
+		DARK_BG_R = 232, DARK_BG_G = 240, DARK_BG_B = 255;
 	
 	private Context context;
 	private int layout;
@@ -54,11 +58,9 @@ class SearchResultsAdapter extends ArrayAdapter<RowData> {
 			// populate with search data.
 			holder = new ViewHolder();
 			holder.SWIS = (TextView)row.findViewById(R.id.SWIS);
-			holder.PARCEL_ID = (TextView)row.findViewById(R.id.PARCEL_ID);
 			holder.PRINT_KEY = (TextView)row.findViewById(R.id.PRINT_KEY);
 			holder.Loc_St_Nbr = (TextView)row.findViewById(R.id.Street);
 			holder.Street = (TextView)row.findViewById(R.id.LOC_ST_NAME);
-			//holder.LOC_MAIL_ST_SUFF = (TextView)row.findViewById(R.id.LOC_MAIL_ST_SUFF);
 			holder.Loc_Muni_Name = (TextView)row.findViewById(R.id.LOC_MUNI_NAME);
 			
 			row.setTag(holder);
@@ -71,18 +73,22 @@ class SearchResultsAdapter extends ArrayAdapter<RowData> {
 		
 		// Update the Views to contain the search data.
 		holder.SWIS.setText(rowData.values[SWIS]);
-		holder.PARCEL_ID.setText(rowData.values[PARCEL_ID]);
 		holder.PRINT_KEY.setText(rowData.values[PRINT_KEY]);
 		holder.Loc_St_Nbr.setText(rowData.values[Loc_St_Nbr]);
 		holder.Street.setText(rowData.values[Street]);
-		//holder.LOC_MAIL_ST_SUFF.setText(rowData.values[LOC_MAIL_ST_SUFF]);
 		holder.Loc_Muni_Name.setText(rowData.values[Loc_Muni_Name]);
+		
+		// Apply dark background to every other row.
+		if (position % 2 == 0)
+			row.setBackgroundColor(Color.rgb(DARK_BG_R, DARK_BG_G, DARK_BG_B));
+		else
+			row.setBackgroundColor(Color.WHITE);
 		
 		return row;
 	}
 	
 	/** A simple object that contains the Views that need to be populated with search data. */
 	static class ViewHolder {
-		TextView SWIS, PARCEL_ID, PRINT_KEY, Loc_St_Nbr, Street, Loc_Muni_Name;
+		TextView SWIS, PRINT_KEY, Loc_St_Nbr, Street, Loc_Muni_Name;
 	}
 }

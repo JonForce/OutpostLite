@@ -19,6 +19,7 @@ public class ModFileAccess {
 			MOD_FILE_NAME = "ModFile.txt",
 			SET_DEFAULT_TAG = "SET_DEFAULT_IMAGE",
 			DELETE_IMAGE_TAG = "DELETE_IMAGE",
+			SET_TAG = "SET",
 			ENTRY_DELIMITER = "|";
 	
 	private final StorageAccess storage;
@@ -43,6 +44,10 @@ public class ModFileAccess {
 	
 	public void addSetDefaultImage(String SWIS, String PRINT_KEY, String PARCEL_ID, int IMAGE_ID) {
 		write(SET_DEFAULT_TAG + "," + SWIS + "," + PRINT_KEY + "," + PARCEL_ID + "," + IMAGE_ID);
+	}
+	
+	public void addSetValue(String SWIS, String PRINT_KEY, String PARCEL_ID, String name, String VALUE) {
+		write(SET_TAG + "," + SWIS + "," + PRINT_KEY + "," + PARCEL_ID + "," + name + "," + VALUE);
 	}
 	
 	private void write(String line) {

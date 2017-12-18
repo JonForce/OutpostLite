@@ -11,7 +11,7 @@ class RowData {
 		{ "SWIS", "PARCEL_ID", "PRINT_KEY", "Loc_St_Nbr", "Street", "Loc_Muni_Name", "XML_LOCATION" };
 	
 	/** These integers correspond to where in the values array the data is stored.
-	 * They must match their position in the fields array. */
+	 * They must match their rowNumber in the fields array. */
 	public static final int
 		SWIS = 0,
 		PARCEL_ID = 1,

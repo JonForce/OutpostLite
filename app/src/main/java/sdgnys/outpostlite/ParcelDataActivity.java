@@ -40,7 +40,6 @@ public abstract class ParcelDataActivity extends AppCompatActivity {
 			if (view != null) {
 				((TextView) view).setText((String) data.get(dataKey));
 			}
-			
 		}
 	}
 	
@@ -58,6 +57,23 @@ public abstract class ParcelDataActivity extends AppCompatActivity {
 				
 				return view;
 			}
+		}
+		
+		return null;
+	}
+	
+	public String getStringFrom(HashMap<String, Object> data, String name) {
+		for (String dataKey : data.keySet()) {
+			if (data.get(dataKey) instanceof HashMap) {
+				String result = getStringFrom((HashMap<String, Object>) data.get(dataKey), name);
+				if (result != null)
+					return result;
+				
+				continue;
+			}
+			
+			if (dataKey.equals(name))
+				return (String) data.get(name);
 		}
 		
 		return null;

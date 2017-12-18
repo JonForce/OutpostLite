@@ -104,6 +104,7 @@ public class ImportActivity extends AppCompatActivity {
 		});
 	}
 	
+	/** This method takes in parsed parcel data and inputs the stuff that's needed into the database. */
 	private void fillDatabase(Database database, ArrayList<HashMap<String, Object>> parcels) {
 		int XML_LOCATION = 0;
 		for (HashMap<String, Object> parcel : parcels) {
@@ -116,6 +117,8 @@ public class ImportActivity extends AppCompatActivity {
 					(String) ((HashMap<String, Object>) parcel.get("Location")).get("Loc_St_Nbr"),
 					(String) ((HashMap<String, Object>) parcel.get("Location")).get("Street"),
 					(String) ((HashMap<String, Object>) parcel.get("Location")).get("Loc_Muni_Name"),
+					(String) ((HashMap<String, Object>) parcel.get("Assessment")).get("TotalAV"),
+					(String) ((HashMap<String, Object>) parcel.get("Assessment")).get("LandAV"),
 					XML_LOCATION + ""
 					);
 			XML_LOCATION ++;
