@@ -90,7 +90,12 @@ public class Search {
 					query += " AND ";
 				
 				// Add the search term to the query. (The end part makes it case insensitive)
-				query += fieldName + " = '" + searchTerms.values[field] + "' COLLATE NOCASE";
+				
+				if (fieldName.equals("Street"))
+					// Street names need to use a loose comparison.
+					query += fieldName + " LIKE '%" + searchTerms.values[field] + "%' COLLATE NOCASE";
+				else
+					query += fieldName + " = '" + searchTerms.values[field] + "' COLLATE NOCASE";
 			}
 		}
 		

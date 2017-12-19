@@ -3,31 +3,17 @@ package sdgnys.outpostlite;
 import android.Manifest;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Environment;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.ProgressBar;
 import android.widget.Toast;
-
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import sdgnys.outpostlite.sdgnys.outpostlite.access.ParcelXmlParser;
 import sdgnys.outpostlite.sdgnys.outpostlite.access.StorageAccess;
-import sdgnys.outpostlite.sdgnys.outpostlite.access.database.Database;
 import sdgnys.outpostlite.search.SearchActivity;
 
 import static sdgnys.outpostlite.Logger.*;
