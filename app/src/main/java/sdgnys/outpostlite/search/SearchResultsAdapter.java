@@ -7,12 +7,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 
 import sdgnys.outpostlite.R;
 
+import static sdgnys.outpostlite.Logger.log;
 import static sdgnys.outpostlite.search.RowData.*;
 
 /**
@@ -25,18 +27,18 @@ class SearchResultsAdapter extends ArrayAdapter<RowData> {
 	private static final int
 		DARK_BG_R = 232, DARK_BG_G = 240, DARK_BG_B = 255;
 	
-	private Context context;
+	private SearchActivity activity;
 	private int layout;
 	private ArrayList<RowData> data;
 	
 	/** Create the tool for displaying search results in a ListView.
-	 * @param context The context of the Activity.
+	 * @param activity The context of the Activity.
 	 * @param layout The layout that will be used for each row in the results.
 	 * @param data The search result data that will be displayed in the ListView.
 	 */
-	public SearchResultsAdapter(Context context, int layout, ArrayList<RowData> data) {
-		super(context, layout, data);
-		this.context = context;
+	public SearchResultsAdapter(SearchActivity activity, int layout, ArrayList<RowData> data) {
+		super(activity, layout, data);
+		this.activity = activity;
 		this.layout = layout;
 		this.data = data;
 	}
@@ -44,14 +46,14 @@ class SearchResultsAdapter extends ArrayAdapter<RowData> {
 	/** We overwrite this method to provide a custom implementation for how views will
 	 * appear on each row in the ListView. */
 	@Override
-	public View getView(int position, View convertView, ViewGroup parent) {
+	public View getView(final int position, View convertView, ViewGroup parent) {
 		View row = convertView;
 		ViewHolder holder = null;
 		
 		// If they are requesting the view of a new row,
 		if(row == null)
 		{
-			LayoutInflater inflater = ((Activity) context).getLayoutInflater();
+			LayoutInflater inflater = ((Activity) activity).getLayoutInflater();
 			row = inflater.inflate(layout, parent, false);
 			
 			// Create a new ViewHolder, which is a container for the views in the row that we will
@@ -62,6 +64,7 @@ class SearchResultsAdapter extends ArrayAdapter<RowData> {
 			holder.Loc_St_Nbr = (TextView)row.findViewById(R.id.Street);
 			holder.Street = (TextView)row.findViewById(R.id.LOC_ST_NAME);
 			holder.Loc_Muni_Name = (TextView)row.findViewById(R.id.LOC_MUNI_NAME);
+			holder.viewButton = (Button)row.findViewById(R.id.viewButton);
 			
 			row.setTag(holder);
 		} else {
@@ -78,6 +81,13 @@ class SearchResultsAdapter extends ArrayAdapter<RowData> {
 		holder.Street.setText(rowData.values[Street]);
 		holder.Loc_Muni_Name.setText(rowData.values[Loc_Muni_Name]);
 		
+		holder.viewButton.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				activity.selectSearchResult(position);
+			}
+		});
+		
 		// Apply dark background to every other row.
 		if (position % 2 == 0)
 			row.setBackgroundColor(Color.rgb(DARK_BG_R, DARK_BG_G, DARK_BG_B));
@@ -90,5 +100,6 @@ class SearchResultsAdapter extends ArrayAdapter<RowData> {
 	/** A simple object that contains the Views that need to be populated with search data. */
 	static class ViewHolder {
 		TextView SWIS, PRINT_KEY, Loc_St_Nbr, Street, Loc_Muni_Name;
+		Button viewButton;
 	}
 }

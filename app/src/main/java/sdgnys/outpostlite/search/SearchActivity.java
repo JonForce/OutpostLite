@@ -28,6 +28,9 @@ import static sdgnys.outpostlite.search.RowData.*;
  */
 public class SearchActivity extends AppCompatActivity {
 	
+	private ArrayList<RowData> searchResults;
+	private ArrayList<HashMap<String, Object>> parcelData;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -40,9 +43,10 @@ public class SearchActivity extends AppCompatActivity {
 				streetNumber = getIntent().getStringExtra("streetNumber"),
 				streetName = getIntent().getStringExtra("streetName");
 		
+		// Pull all of the parcel data from disk. This is expensive.
 		ParcelXmlParser parser = new ParcelXmlParser(new StorageAccess(this));
 		parser.beginParsing();
-		final ArrayList<HashMap<String, Object>> parcelData = parser.getParcels();
+		parcelData = parser.getParcels();
 		
 		// Populate the search terms into an object to be sent to the search program.
 		RowData searchTerms = new RowData();
@@ -52,7 +56,7 @@ public class SearchActivity extends AppCompatActivity {
 		searchTerms.values[Street] = streetName;
 		
 		// Launch a search with the specified terms and get the results.
-		final ArrayList<RowData> searchResults = new Search(this, searchTerms).getResults();
+		searchResults = new Search(this, searchTerms).getResults();
 		
 		if (searchResults.size() > 0) {
 			// Set the adapter of the ListView to be a search results adapter.
@@ -64,20 +68,27 @@ public class SearchActivity extends AppCompatActivity {
 				@Override
 				public void onItemClick(AdapterView<?> adapterView, View view, int position, long arg3)
 				{
-					Intent intent = new Intent(SearchActivity.this, ViewParcel.class);
-					
-					int XML_LOCATION =
-							Integer.parseInt(searchResults.get(position).values[RowData.XML_LOCATION]);
-					HashMap<String, Object> parcel = parcelData.get(XML_LOCATION);
-					
-					intent.putExtra("parcelData", parcel);
-					
-					startActivity(intent);
+					selectSearchResult(position);
 				}
 			});
 		} else {
 			findViewById(R.id.noResultsLabel).setVisibility(View.VISIBLE);
 		}
+	}
+	
+	/** This event should be activated when a search result is pressed or selected. It will
+	 * launch the ViewParcel activity with the selected parcel's data.
+	 */
+	public void selectSearchResult(int position) {
+		Intent intent = new Intent(SearchActivity.this, ViewParcel.class);
+		
+		int XML_LOCATION =
+				Integer.parseInt(searchResults.get(position).values[RowData.XML_LOCATION]);
+		HashMap<String, Object> parcel = parcelData.get(XML_LOCATION);
+		
+		intent.putExtra("parcelData", parcel);
+		
+		startActivity(intent);
 	}
 	
 	/** @return the list view. */

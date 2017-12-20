@@ -156,8 +156,6 @@ public class ViewParcel extends ParcelDataActivity {
 		
 		// We need to set the LandAV and TotalAV text boxes to have the values from the DB.
 		updateAVTextBoxes();
-		
-		database.printDatabase(ParcelDataTable.TABLE_NAME);
 	}
 	
 	@Override

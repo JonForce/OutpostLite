@@ -1,4 +1,4 @@
-#Tue Dec 19 12:47:05 EST 2017
+#Wed Dec 20 12:27:53 EST 2017
 base.0=C\:\\Users\\jforce\\AndroidStudioProjects\\OutpostLite\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run_ba23e2fc492ae1527722b2acfa14df81da34e1e3
 renamed.1=classes2.dex
 renamed.0=classes.dex
