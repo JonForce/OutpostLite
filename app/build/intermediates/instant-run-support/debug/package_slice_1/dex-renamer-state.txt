@@ -1,4 +1,4 @@
-#Mon Dec 18 14:43:33 EST 2017
+#Wed Dec 27 13:40:44 EST 2017
 base.0=C\:\\Users\\jforce\\AndroidStudioProjects\\OutpostLite\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\5\\slice_1
 renamed.0=classes.dex
 file.0=C\:\\Users\\jforce\\AndroidStudioProjects\\OutpostLite\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\5\\slice_1\\classes.dex

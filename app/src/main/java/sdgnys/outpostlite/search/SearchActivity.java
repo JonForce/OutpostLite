@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -30,6 +31,10 @@ public class SearchActivity extends AppCompatActivity {
 	
 	private ArrayList<RowData> searchResults;
 	private ArrayList<HashMap<String, Object>> parcelData;
+	private boolean
+			numberSortAscending = true,
+			nameSortAscending = true;
+	private String municipality, taxMapID, streetNumber, streetName;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -37,17 +42,66 @@ public class SearchActivity extends AppCompatActivity {
 		setContentView(R.layout.activity_search);
 		
 		// Pull in the input parameters that will be used as search terms.
-		String
-				municipality = getIntent().getStringExtra("municipality"),
-				taxMapID = getIntent().getStringExtra("taxMapID"),
-				streetNumber = getIntent().getStringExtra("streetNumber"),
-				streetName = getIntent().getStringExtra("streetName");
+		municipality = getIntent().getStringExtra("municipality");
+		taxMapID = getIntent().getStringExtra("taxMapID");
+		streetNumber = getIntent().getStringExtra("streetNumber");
+		streetName = getIntent().getStringExtra("streetName");
 		
 		// Pull all of the parcel data from disk. This is expensive.
 		ParcelXmlParser parser = new ParcelXmlParser(new StorageAccess(this));
 		parser.beginParsing();
 		parcelData = parser.getParcels();
 		
+		setupSortButtons();
+		search();
+	}
+	
+	/** This event should be activated when a search result is pressed or selected. It will
+	 * launch the ViewParcel activity with the selected parcel's data.
+	 */
+	public void selectSearchResult(int position) {
+		Intent intent = new Intent(SearchActivity.this, ViewParcel.class);
+		
+		int XML_LOCATION =
+				Integer.parseInt(searchResults.get(position).values[RowData.XML_LOCATION]);
+		HashMap<String, Object> parcel = parcelData.get(XML_LOCATION);
+		
+		intent.putExtra("parcelData", parcel);
+		
+		startActivity(intent);
+	}
+	
+	private void setupSortButtons() {
+		final ImageButton
+				stNumberSortButton = (ImageButton) findViewById(R.id.stNumberSortButton),
+				stNameSortButton = (ImageButton) findViewById(R.id.stNameSortButton);
+		
+		stNumberSortButton.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				numberSortAscending = !numberSortAscending;
+				if (numberSortAscending)
+					stNumberSortButton.setImageDrawable(getResources().getDrawable(android.R.drawable.arrow_up_float));
+				else
+					stNumberSortButton.setImageDrawable(getResources().getDrawable(android.R.drawable.arrow_down_float));
+				search();
+			}
+		});
+		
+		stNameSortButton.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				nameSortAscending = !nameSortAscending;
+				if (nameSortAscending)
+					stNameSortButton.setImageDrawable(getResources().getDrawable(android.R.drawable.arrow_up_float));
+				else
+					stNameSortButton.setImageDrawable(getResources().getDrawable(android.R.drawable.arrow_down_float));
+				search();
+			}
+		});
+	}
+	
+	private void search() {
 		// Populate the search terms into an object to be sent to the search program.
 		RowData searchTerms = new RowData();
 		searchTerms.values[Loc_Muni_Name] = municipality;
@@ -56,7 +110,7 @@ public class SearchActivity extends AppCompatActivity {
 		searchTerms.values[Street] = streetName;
 		
 		// Launch a search with the specified terms and get the results.
-		searchResults = new Search(this, searchTerms).getResults();
+		searchResults = new Search(this, searchTerms, nameSortAscending, numberSortAscending).getResults();
 		
 		if (searchResults.size() > 0) {
 			// Set the adapter of the ListView to be a search results adapter.
@@ -74,21 +128,6 @@ public class SearchActivity extends AppCompatActivity {
 		} else {
 			findViewById(R.id.noResultsLabel).setVisibility(View.VISIBLE);
 		}
-	}
-	
-	/** This event should be activated when a search result is pressed or selected. It will
-	 * launch the ViewParcel activity with the selected parcel's data.
-	 */
-	public void selectSearchResult(int position) {
-		Intent intent = new Intent(SearchActivity.this, ViewParcel.class);
-		
-		int XML_LOCATION =
-				Integer.parseInt(searchResults.get(position).values[RowData.XML_LOCATION]);
-		HashMap<String, Object> parcel = parcelData.get(XML_LOCATION);
-		
-		intent.putExtra("parcelData", parcel);
-		
-		startActivity(intent);
 	}
 	
 	/** @return the list view. */

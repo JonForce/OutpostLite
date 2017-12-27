@@ -53,7 +53,7 @@ class SearchResultsAdapter extends ArrayAdapter<RowData> {
 		// If they are requesting the view of a new row,
 		if(row == null)
 		{
-			LayoutInflater inflater = ((Activity) activity).getLayoutInflater();
+			LayoutInflater inflater = activity.getLayoutInflater();
 			row = inflater.inflate(layout, parent, false);
 			
 			// Create a new ViewHolder, which is a container for the views in the row that we will

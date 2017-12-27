@@ -12,14 +12,16 @@ import android.widget.ListView;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import sdgnys.outpostlite.ParcelImageActivity;
 import sdgnys.outpostlite.R;
 
-public class ImprovementsActivity extends AppCompatActivity {
+public class ImprovementsActivity extends ParcelImageActivity  {
+	
+	public ImprovementsActivity() { super(R.layout.activity_improvements); }
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_improvements);
 		
 		// Get the improvement data from the intent.
 		ArrayList<HashMap<String, Object>> improvements =

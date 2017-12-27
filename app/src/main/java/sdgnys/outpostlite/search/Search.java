@@ -21,13 +21,13 @@ public class Search {
 	 * @param context The Activity's context.
 	 * @param searchTerms The terms to search by.
 	 */
-	public Search(Context context, RowData searchTerms) {
+	public Search(Context context, RowData searchTerms, boolean nameAscending, boolean numberAscending) {
 		this.results = new ArrayList<>();
 		
 		// Establish a connection to the database.
 		Database database = new Database(context);
 		// Generate the query string based on the terms we want to search for.
-		String query = getQuery(searchTerms);
+		String query = getQuery(searchTerms, nameAscending, numberAscending);
 		
 		// Begin the search!
 		executeSearch(query, database);
@@ -66,7 +66,7 @@ public class Search {
 	}
 	
 	/** @return a query that will pull all data from the database that matches the search terms. */
-	private String getQuery(RowData searchTerms) {
+	private String getQuery(RowData searchTerms, boolean nameAscending, boolean numberAscending) {
 		// Define the query as starting off with the basic shit.
 		String query = "SELECT * FROM " + ParcelDataTable.TABLE_NAME;
 		// This variable may seem tricky, but I'm about to break it down for you.
@@ -98,6 +98,12 @@ public class Search {
 					query += fieldName + " = '" + searchTerms.values[field] + "' COLLATE NOCASE";
 			}
 		}
+		
+		// Add sorting too the query.
+		String
+				nameSort = nameAscending? "ASC" : "DESC",
+				numberSort = numberAscending? "ASC" : "DESC";
+		query += " ORDER BY Street " + nameSort + ", Loc_St_Nbr " + numberSort;
 		
 		return query;
 	}
