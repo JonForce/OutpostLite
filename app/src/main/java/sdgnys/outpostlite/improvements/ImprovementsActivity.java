@@ -17,7 +17,9 @@ import sdgnys.outpostlite.R;
 
 public class ImprovementsActivity extends ParcelImageActivity  {
 	
-	public ImprovementsActivity() { super(R.layout.activity_improvements); }
+	public ImprovementsActivity() {
+		super(R.layout.activity_improvements, 900, 600, 525, 350);
+	}
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

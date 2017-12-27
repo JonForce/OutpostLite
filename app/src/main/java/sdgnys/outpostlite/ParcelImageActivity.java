@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v4.content.FileProvider;
 import android.view.View;
+import android.view.ViewTreeObserver;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
@@ -19,6 +20,7 @@ import sdgnys.outpostlite.sdgnys.outpostlite.access.StorageAccess;
 
 import static android.content.res.Configuration.ORIENTATION_LANDSCAPE;
 import static sdgnys.outpostlite.Logger.logE;
+import static sdgnys.outpostlite.R.id.view;
 
 /**
  * Created by jforce on 12/27/2017.
@@ -29,7 +31,7 @@ public class ParcelImageActivity extends ParcelDataActivity {
 			REQUEST_IMAGE_CAPTURE = 1;
 	
 	/** These constants define the width and height of the thumbnails that the user can scroll through */
-	private static final int
+	private int
 			LANDSCAPE_THUMBNAIL_WIDTH = 900, LANDSCAPE_THUMBNAIL_HEIGHT = 600,
 			PORTRAIT_THUMBNAIL_WIDTH = 750, PORTRAIT_THUMBNAIL_HEIGHT = 500;
 	private int THUMBNAIL_WIDTH, THUMBNAIL_HEIGHT;
@@ -46,8 +48,18 @@ public class ParcelImageActivity extends ParcelDataActivity {
 	
 	private final int layout;
 	
-	public ParcelImageActivity(int layout) {
+	public ParcelImageActivity(int layout,
+	        int LANDSCAPE_THUMBNAIL_WIDTH, int LANDSCAPE_THUMBNAIL_HEIGHT,
+	         int PORTRAIT_THUMBNAIL_WIDTH, int PORTRAIT_THUMBNAIL_HEIGHT) {
 		this.layout = layout;
+		this.LANDSCAPE_THUMBNAIL_WIDTH = LANDSCAPE_THUMBNAIL_WIDTH;
+		this.LANDSCAPE_THUMBNAIL_HEIGHT = LANDSCAPE_THUMBNAIL_HEIGHT;
+		this.PORTRAIT_THUMBNAIL_WIDTH = PORTRAIT_THUMBNAIL_WIDTH;
+		this.PORTRAIT_THUMBNAIL_HEIGHT = PORTRAIT_THUMBNAIL_HEIGHT;
+	}
+	
+	public ParcelImageActivity(int layout) {
+		this(layout, 900, 600, 750, 500);
 	}
 	
 	@Override
@@ -55,7 +67,7 @@ public class ParcelImageActivity extends ParcelDataActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(layout);
 		
-		// We need to set the size of the thumbnails depending on the orientation of the device.
+		// We need to set the size of the thumbnails depending on the orientation of the device
 		if (getResources().getConfiguration().orientation == ORIENTATION_LANDSCAPE) {
 			THUMBNAIL_WIDTH = LANDSCAPE_THUMBNAIL_WIDTH;
 			THUMBNAIL_HEIGHT = LANDSCAPE_THUMBNAIL_HEIGHT;

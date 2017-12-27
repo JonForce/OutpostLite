@@ -79,7 +79,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/guideline24"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.5"/>
+        app:layout_constraintGuide_percent="0.63"/>
 
     <ListView
         android:id="@+id/improvementsView"
@@ -104,7 +104,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
+        android:layout_marginRight="2dp"
         android:layout_marginTop="32dp"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -137,7 +137,7 @@
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="75dp"
+        android:layout_marginTop="260dp"
         android:text="Make Default Image"
         android:visibility="invisible"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -148,7 +148,7 @@
         android:id="@+id/closeButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="80dp"
+        android:layout_marginLeft="65dp"
         android:layout_marginStart="80dp"
         android:layout_marginTop="0dp"
         android:visibility="invisible"
@@ -161,10 +161,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="80dp"
-        android:layout_marginRight="80dp"
+        android:layout_marginRight="65dp"
         android:visibility="invisible"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="@+id/makeDefaultButton"
-        app:srcCompat="@android:drawable/ic_menu_delete"/>
+        app:srcCompat="@android:drawable/ic_menu_delete"
+        android:layout_marginTop="0dp"/>
 
 </android.support.constraint.ConstraintLayout>
