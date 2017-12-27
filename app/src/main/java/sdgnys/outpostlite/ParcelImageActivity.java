@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import sdgnys.outpostlite.sdgnys.outpostlite.access.ModFileAccess;
 import sdgnys.outpostlite.sdgnys.outpostlite.access.StorageAccess;
 
+import static android.content.res.Configuration.ORIENTATION_LANDSCAPE;
 import static sdgnys.outpostlite.Logger.logE;
 
 /**
@@ -29,7 +30,9 @@ public class ParcelImageActivity extends ParcelDataActivity {
 	
 	/** These constants define the width and height of the thumbnails that the user can scroll through */
 	private static final int
-			THUMBNAIL_WIDTH = 900, THUMBNAIL_HEIGHT = 600;
+			LANDSCAPE_THUMBNAIL_WIDTH = 900, LANDSCAPE_THUMBNAIL_HEIGHT = 600,
+			PORTRAIT_THUMBNAIL_WIDTH = 750, PORTRAIT_THUMBNAIL_HEIGHT = 500;
+	private int THUMBNAIL_WIDTH, THUMBNAIL_HEIGHT;
 	
 	private static final String CAPTURE_IMAGE_FILE_PROVIDER = "com.sdgnys.outpostlite.fileprovider";
 	private ImageView zoomedInOn;
@@ -43,12 +46,23 @@ public class ParcelImageActivity extends ParcelDataActivity {
 	
 	private final int layout;
 	
-	public ParcelImageActivity(int layout) { this.layout = layout; }
+	public ParcelImageActivity(int layout) {
+		this.layout = layout;
+	}
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(layout);
+		
+		// We need to set the size of the thumbnails depending on the orientation of the device.
+		if (getResources().getConfiguration().orientation == ORIENTATION_LANDSCAPE) {
+			THUMBNAIL_WIDTH = LANDSCAPE_THUMBNAIL_WIDTH;
+			THUMBNAIL_HEIGHT = LANDSCAPE_THUMBNAIL_HEIGHT;
+		} else {
+			THUMBNAIL_WIDTH = PORTRAIT_THUMBNAIL_WIDTH;
+			THUMBNAIL_HEIGHT = PORTRAIT_THUMBNAIL_HEIGHT;
+		}
 		
 		// We need the swis, print key, and parcel id.
 		// Try to get them from the parcel data if we can.
