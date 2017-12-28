@@ -98,8 +98,6 @@ public class ImportActivity extends AppCompatActivity {
 				
 				setStatus("Successfully finished!");
 				showCheckmark();
-				
-				database.printDatabase(ParcelDataTable.TABLE_NAME);
 			}
 		});
 	}
