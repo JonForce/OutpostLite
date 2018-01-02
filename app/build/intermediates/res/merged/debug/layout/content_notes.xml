@@ -9,6 +9,56 @@
     tools:context="sdgnys.outpostlite.NotesActivity"
     tools:showIn="@layout/activity_notes">
 
+    <View
+        android:id="@+id/bar"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginBottom="0dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="0dp"
+        android:background="#000000"
+        app:layout_constraintBottom_toTopOf="@+id/editArea"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+    <View
+        android:id="@+id/bar2"
+        android:layout_width="1dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="0dp"
+        android:layout_marginTop="0dp"
+        android:background="#c4c4c4"
+        app:layout_constraintBottom_toBottomOf="@+id/bar"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintRight_toLeftOf="@+id/guideline17"
+        android:layout_marginRight="8dp"/>
+
+    <View
+        android:id="@+id/bar4"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="0dp"
+        android:layout_marginTop="2dp"
+        android:background="#c4c4c4"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="@+id/bar3"
+        app:layout_constraintTop_toBottomOf="@+id/textView4"/>
+
+    <View
+        android:id="@+id/bar3"
+        android:layout_width="1dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="0dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="0dp"
+        android:background="#000000"
+        app:layout_constraintBottom_toBottomOf="@+id/bar"
+        app:layout_constraintLeft_toRightOf="@+id/PRINT_KEY"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"/>
+
     <EditText
         android:id="@+id/editArea"
         android:layout_width="0dp"
@@ -18,7 +68,9 @@
         android:layout_marginRight="8dp"
         android:layout_marginTop="8dp"
         android:ems="10"
+        android:gravity="top"
         android:inputType="textMultiLine"
+        android:textAlignment="viewStart"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -32,7 +84,7 @@
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginTop="8dp"
-        android:text="Notes :"
+        android:text="Notes"
         android:textSize="24sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -53,12 +105,12 @@
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="32dp"
         android:layout_marginTop="8dp"
         android:text="Print Key :"
         android:textSize="18sp"
-        app:layout_constraintLeft_toRightOf="@+id/SWIS"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="@+id/guideline17"/>
 
     <TextView
         android:id="@+id/textView6"
@@ -115,12 +167,12 @@
         android:id="@+id/textView13"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="32dp"
+        android:layout_marginLeft="8dp"
         android:layout_marginTop="0dp"
         android:text="Address :"
         android:textSize="18sp"
-        app:layout_constraintLeft_toRightOf="@+id/PARCEL_ID"
-        app:layout_constraintTop_toTopOf="@+id/PARCEL_ID"/>
+        app:layout_constraintTop_toTopOf="@+id/PARCEL_ID"
+        app:layout_constraintLeft_toLeftOf="@+id/guideline17"/>
 
     <TextView
         android:id="@+id/address"
@@ -132,5 +184,12 @@
         android:textSize="18sp"
         app:layout_constraintLeft_toRightOf="@+id/textView13"
         app:layout_constraintTop_toTopOf="@+id/textView13"/>
+
+    <android.support.constraint.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/guideline17"
+        app:layout_constraintGuide_begin="206dp"
+        android:orientation="vertical"/>
 
 </android.support.constraint.ConstraintLayout>

@@ -51,7 +51,6 @@ public class ViewParcel extends ParcelImageActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		//setContentView(R.layout.activity_view_parcel);
 		// Hide keyboard. Without this, the keyboard pops up automatically.
 		getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
 		
@@ -120,6 +119,8 @@ public class ViewParcel extends ParcelImageActivity {
 		
 		findViewById(R.id.setLand).setVisibility(View.INVISIBLE);
 		findViewById(R.id.setTotal).setVisibility(View.INVISIBLE);
+		findViewById(R.id.improvementsButton).setVisibility(View.INVISIBLE);
+		findViewById(R.id.saleButton).setVisibility(View.INVISIBLE);
 	}
 	
 	@Override
@@ -128,6 +129,8 @@ public class ViewParcel extends ParcelImageActivity {
 		
 		findViewById(R.id.setLand).setVisibility(View.VISIBLE);
 		findViewById(R.id.setTotal).setVisibility(View.VISIBLE);
+		findViewById(R.id.improvementsButton).setVisibility(View.VISIBLE);
+		findViewById(R.id.saleButton).setVisibility(View.VISIBLE);
 	}
 	
 	/** This method queries the database to get the current average land and total values. It then
