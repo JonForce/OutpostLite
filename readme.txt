@@ -3,6 +3,8 @@
 This file will serve as a guide for someone who wants to understand how the OutpostLite program is
 structured. It should be the starting place for people looking to make changes to the program.
 
+It is NOT the place to look for install or usage instructions.
+
 
 OutpostLite was originally written by Jon Force.
 If you're from the future and not working for the company anymore (and you're having trouble with
