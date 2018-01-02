@@ -111,5 +111,5 @@
         android:layout_height="wrap_content"
         android:id="@+id/guideline23"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.5"/>
+        app:layout_constraintGuide_percent="0.48"/>
 </android.support.constraint.ConstraintLayout>

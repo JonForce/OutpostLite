@@ -54,7 +54,7 @@ public class ViewParcel extends ParcelImageActivity {
 		// Hide keyboard. Without this, the keyboard pops up automatically.
 		getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
 		
-		// Update the UI with data about the Parcel we recieved.
+		// Update the UI with data about the Parcel we received.
 		super.updateUI(parcelData);
 		
 		database = new Database(this);
@@ -105,6 +105,20 @@ public class ViewParcel extends ParcelImageActivity {
 			public void onClick(View v) {
 				String totalValueText = ((EditText) findViewById(R.id.TotalAVText)).getText().toString();
 				setValue("TotalAV", totalValueText);
+			}
+		});
+		
+		findViewById(R.id.directionsButton).setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				String address =
+						((HashMap<String, Object>) parcelData.get("Location")).get("Loc_St_Nbr")
+						+ " " +
+						((HashMap<String, Object>) parcelData.get("Location")).get("Street")
+						+ " " +
+						((HashMap<String, Object>) parcelData.get("Location")).get("Loc_Muni_Name");
+				
+				launchNavigationToAddress(address);
 			}
 		});
 		
@@ -206,6 +220,14 @@ public class ViewParcel extends ParcelImageActivity {
 				((HashMap<String, Object>)
 				parcelData.get("Sales"))
 				.get("Sale"));
+	}
+	
+	/** Launch google maps with the intent of navigating to the given address. */
+	private void launchNavigationToAddress(String address) {
+		Uri gmmIntentUri = Uri.parse("google.navigation:q=" + address);
+		Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+		mapIntent.setPackage("com.google.android.apps.maps");
+		startActivity(mapIntent);
 	}
 	
 	/** This will make the keyboard go away. Stolen shamelessly from
