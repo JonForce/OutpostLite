@@ -8,14 +8,17 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 /** The activity that shows the user all of the sale information. */
-public class SaleActivity extends ParcelDataActivity {
+public class SaleActivity extends ParcelImageActivity {
+	
+	public SaleActivity() {
+		super(R.layout.activity_sale, 900, 600, 740, 493);
+	}
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_sale);
 		
-		// Update the UI with data about the Parcel we recieved.
+		// Update the UI with data about the Parcel we received.
 		super.updateUI(parcelData);
 	}
 	

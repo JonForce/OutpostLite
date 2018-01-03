@@ -4,37 +4,22 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
-import android.graphics.Bitmap;
-import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
-import android.support.v4.content.FileProvider;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import java.io.File;
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 import sdgnys.outpostlite.improvements.ImprovementsActivity;
-import sdgnys.outpostlite.sdgnys.outpostlite.access.ModFileAccess;
-import sdgnys.outpostlite.sdgnys.outpostlite.access.StorageAccess;
 import sdgnys.outpostlite.sdgnys.outpostlite.access.database.Database;
 import sdgnys.outpostlite.sdgnys.outpostlite.access.database.ParcelDataTable;
 import sdgnys.outpostlite.sdgnys.outpostlite.access.database.SqlQueries;
-import sdgnys.outpostlite.search.SearchActivity;
-
-import static sdgnys.outpostlite.Logger.logE;
 
 /**
  * @author jforce
@@ -88,6 +73,9 @@ public class ViewParcel extends ParcelImageActivity {
 			public void onClick(View v) {
 				Intent intent = new Intent(ViewParcel.this, SaleActivity.class);
 				intent.putExtra("parcelData", getSale());
+				intent.putExtra("SWIS", SWIS);
+				intent.putExtra("PRINT_KEY", PRINT_KEY);
+				intent.putExtra("PARCEL_ID", PARCEL_ID);
 				startActivity(intent);
 			}
 		});
@@ -121,7 +109,6 @@ public class ViewParcel extends ParcelImageActivity {
 				launchNavigationToAddress(address);
 			}
 		});
-		
 		
 		// We need to set the LandAV and TotalAV text boxes to have the values from the DB.
 		updateAVTextBoxes();

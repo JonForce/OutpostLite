@@ -78,7 +78,7 @@ public class ParcelImageActivity extends ParcelDataActivity {
 		
 		// We need the swis, print key, and parcel id.
 		// Try to get them from the parcel data if we can.
-		if (parcelData != null) {
+		if (parcelData != null && parcelData.get("SWIS") != null) {
 			SWIS = (String) parcelData.get("SWIS");
 			PRINT_KEY = (String) parcelData.get("PRINT_KEY");
 			PARCEL_ID = (String) parcelData.get("Parcel_Id");
