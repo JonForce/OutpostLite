@@ -2,6 +2,7 @@ package sdgnys.outpostlite;
 
 import android.Manifest;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -64,6 +65,16 @@ public class MainActivity extends AppCompatActivity {
 		    public void onClick(View v) {
 			    Intent intent = new Intent(MainActivity.this, OptionsActivity.class);
 			    startActivity(intent);
+		    }
+	    });
+	
+	    findViewById(R.id.mapsButton).setOnClickListener(new View.OnClickListener() {
+		    @Override
+		    public void onClick(View v) {
+			    Uri gmmIntentUri = Uri.parse("geo:0,0");
+			    Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+			    mapIntent.setPackage("com.google.android.apps.maps");
+			    startActivity(mapIntent);
 		    }
 	    });
 		
