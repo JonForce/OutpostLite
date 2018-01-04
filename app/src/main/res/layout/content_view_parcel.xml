@@ -290,34 +290,49 @@
         android:layout_width="0dp"
         android:layout_height="1dip"
         android:layout_marginBottom="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="0dp"
         android:background="#000000"
         app:layout_constraintBottom_toTopOf="@+id/textView40"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@+id/title"
-        />
+        app:layout_constraintHorizontal_bias="0.0"/>
 
     <View
         android:id="@+id/view"
         android:layout_width="0dp"
         android:layout_height="1dip"
         android:layout_marginBottom="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="0dp"
         android:layout_marginTop="8dp"
         android:background="#000000"
         app:layout_constraintBottom_toTopOf="@+id/textView33"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@+id/title"
-        app:layout_constraintTop_toBottomOf="@+id/textView64"/>
+        app:layout_constraintTop_toBottomOf="@+id/textView64"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintVertical_bias="0.466"/>
+
+    <View
+        android:id="@+id/topHR"
+        android:layout_width="0dp"
+        android:layout_height="1dip"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="0dp"
+        android:layout_marginTop="0dp"
+        android:background="#000000"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/title"
+        app:layout_constraintTop_toTopOf="@+id/verticalRule"/>
 
     <View
         android:id="@+id/view2"
         android:layout_width="0dp"
         android:layout_height="1dip"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="0dp"
         android:layout_marginTop="8dp"
         android:background="#000000"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -326,12 +341,24 @@
         app:layout_constraintHorizontal_bias="0.0"/>
 
     <View
+        android:id="@+id/verticalRule"
+        android:layout_width="1dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="8dp"
+        android:background="#000000"
+        app:layout_constraintBottom_toTopOf="@+id/saleButton"
+        app:layout_constraintLeft_toRightOf="@+id/view"
+        app:layout_constraintTop_toBottomOf="@+id/directionsButton"/>
+
+    <View
         android:id="@+id/view3"
         android:layout_width="0dp"
         android:layout_height="1dip"
         android:layout_marginBottom="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="0dp"
         android:layout_marginTop="0dp"
         android:background="#000000"
         app:layout_constraintBottom_toTopOf="@+id/textView59"
