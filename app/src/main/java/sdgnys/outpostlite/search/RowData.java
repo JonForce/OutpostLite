@@ -8,14 +8,14 @@ package sdgnys.outpostlite.search;
 class RowData {
 	
 	public static final String[] fields =
-		{ "SWIS", "PARCEL_ID", "PRINT_KEY", "Loc_St_Nbr", "Street", "Loc_Muni_Name", "XML_LOCATION" };
+		{ "SWIS", "PARCEL_ID", "SBL", "Loc_St_Nbr", "Street", "Loc_Muni_Name", "XML_LOCATION" };
 	
 	/** These integers correspond to where in the values array the data is stored.
 	 * They must match their rowNumber in the fields array. */
 	public static final int
 		SWIS = 0,
 		PARCEL_ID = 1,
-		PRINT_KEY = 2,
+		SBL = 2,
 			Loc_St_Nbr = 3,
 			Street = 4,
 			Loc_Muni_Name = 5,

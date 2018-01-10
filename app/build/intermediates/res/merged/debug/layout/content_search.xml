@@ -121,7 +121,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/guideline7"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.15"/>
+        app:layout_constraintGuide_percent="0.1"/>
 
     <ListView
         android:id="@+id/listView"

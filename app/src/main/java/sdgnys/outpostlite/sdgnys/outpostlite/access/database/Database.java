@@ -15,7 +15,7 @@ import static sdgnys.outpostlite.Logger.log;
  */
 public class Database extends SQLiteOpenHelper {
 	
-	public static final int VERSION = 5;
+	public static final int VERSION = 6;
 	public static final String NAME = "Database.db";
 	
 	public Database(Context context) {
@@ -93,6 +93,7 @@ public class Database extends SQLiteOpenHelper {
 		resetDatabase(db);
 	}
 	
+	@Deprecated
 	private void createImageDataTable(SQLiteDatabase db) {
 		String query = SqlQueries.createDatabaseQuery(
 				ImageDataTable.TABLE_NAME,

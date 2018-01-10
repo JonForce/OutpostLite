@@ -3450,6 +3450,7 @@ containing a value of this type.
         public static final int right_side=0x7f0e015d;
         public static final int saleButton=0x7f0e010b;
         public static final int sale_date=0x7f0e00d4;
+        public static final int sbl=0x7f0e0095;
         public static final int screen=0x7f0e0028;
         public static final int scroll=0x7f0e0024;
         public static final int scrollIndicatorDown=0x7f0e0061;
@@ -3496,7 +3497,6 @@ containing a value of this type.
         public static final int submenuarrow=0x7f0e006c;
         public static final int submit_area=0x7f0e007d;
         public static final int tabMode=0x7f0e001a;
-        public static final int taxMapID=0x7f0e0095;
         public static final int text=0x7f0e00f0;
         public static final int text2=0x7f0e0166;
         public static final int textSpacerNoButtons=0x7f0e0060;

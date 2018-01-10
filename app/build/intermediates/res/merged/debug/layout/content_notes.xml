@@ -107,12 +107,12 @@
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="Print Key :"
-        android:textSize="18sp"
-        app:layout_constraintTop_toTopOf="parent"
         android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="@+id/guideline17"/>
+        android:layout_marginTop="8dp"
+        android:text="SBL :"
+        android:textSize="18sp"
+        app:layout_constraintLeft_toLeftOf="@+id/guideline17"
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <TextView
         android:id="@+id/textView6"

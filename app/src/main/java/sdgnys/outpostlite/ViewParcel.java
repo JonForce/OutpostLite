@@ -49,7 +49,7 @@ public class ViewParcel extends ParcelImageActivity {
 			public void onClick(View v) {
 				Intent intent = new Intent(ViewParcel.this, NotesActivity.class);
 				intent.putExtra("SWIS", SWIS);
-				intent.putExtra("PRINT_KEY", PRINT_KEY);
+				intent.putExtra("SBL", SBL);
 				intent.putExtra("PARCEL_ID", PARCEL_ID);
 				intent.putExtra("address", (String) parcelData.get("Street"));
 				startActivity(intent);
@@ -62,7 +62,8 @@ public class ViewParcel extends ParcelImageActivity {
 				Intent intent = new Intent(ViewParcel.this, ImprovementsActivity.class);
 				intent.putExtra("improvements", getImprovements());
 				intent.putExtra("SWIS", SWIS);
-				intent.putExtra("PRINT_KEY", PRINT_KEY);
+				intent.putExtra("SBL", SBL);
+				intent.putExtra("PRINT_KEY", (String) parcelData.get("PRINT_KEY"));
 				intent.putExtra("PARCEL_ID", PARCEL_ID);
 				startActivity(intent);
 			}
@@ -74,7 +75,8 @@ public class ViewParcel extends ParcelImageActivity {
 				Intent intent = new Intent(ViewParcel.this, SaleActivity.class);
 				intent.putExtra("parcelData", getSale());
 				intent.putExtra("SWIS", SWIS);
-				intent.putExtra("PRINT_KEY", PRINT_KEY);
+				intent.putExtra("SBL", SBL);
+				intent.putExtra("PRINT_KEY", (String) parcelData.get("PRINT_KEY"));
 				intent.putExtra("PARCEL_ID", PARCEL_ID);
 				startActivity(intent);
 			}
@@ -140,10 +142,10 @@ public class ViewParcel extends ParcelImageActivity {
 		// Make a query for both the land and the total average values.
 		Cursor LandAVCursor =
 				database.getReadableDatabase().rawQuery(
-						SqlQueries.get(SWIS, PRINT_KEY, PARCEL_ID, ParcelDataTable.TABLE_NAME, "LandAV"), null);
+						SqlQueries.get(SWIS, SBL, PARCEL_ID, ParcelDataTable.TABLE_NAME, "LandAV"), null);
 		Cursor TotalAVCursor =
 				database.getReadableDatabase().rawQuery(
-						SqlQueries.get(SWIS, PRINT_KEY, PARCEL_ID, ParcelDataTable.TABLE_NAME, "TotalAV"), null);
+						SqlQueries.get(SWIS, SBL, PARCEL_ID, ParcelDataTable.TABLE_NAME, "TotalAV"), null);
 		
 		// Next we need to move to the beginning of the results of those queries.
 		LandAVCursor.moveToFirst();
@@ -166,13 +168,13 @@ public class ViewParcel extends ParcelImageActivity {
 			// Create the where clause that selects the correct record.
 			String whereClause =
 					"SWIS = " + SWIS + " AND " +
-					"PRINT_KEY = \"" + PRINT_KEY + "\" AND " +
+					"SBL = \"" + SBL + "\" AND " +
 					"PARCEL_ID = " + PARCEL_ID;
 			
 			// Make the change.
 			database.getWritableDatabase().update(ParcelDataTable.TABLE_NAME, values, whereClause, null);
 			
-			modFile.addSetValue(SWIS, PRINT_KEY, PARCEL_ID, name, newValue);
+			modFile.addSetValue(SWIS, SBL, PARCEL_ID, name, newValue);
 		} catch (Exception e) {
 			e.printStackTrace();
 			

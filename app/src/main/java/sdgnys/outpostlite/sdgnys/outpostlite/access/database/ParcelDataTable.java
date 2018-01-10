@@ -12,7 +12,7 @@ public class ParcelDataTable extends DataTable {
 	public static final String[]
 			columns = new String[] {
 			"SWIS",
-			"PRINT_KEY",
+			"SBL",
 			"PARCEL_ID",
 			"Loc_St_Nbr",
 			"Street",

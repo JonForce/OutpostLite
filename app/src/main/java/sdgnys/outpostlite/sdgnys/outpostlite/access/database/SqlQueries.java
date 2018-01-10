@@ -15,7 +15,7 @@ public class SqlQueries {
 	                         String tableName, String columnName) {
 		return "SELECT " + columnName + " FROM " + tableName + " " +
 				"WHERE SWIS = " + SWIS + " AND " +
-				"PRINT_KEY = \"" + PRINT_KEY + "\" AND " +
+				"SBL = \"" + PRINT_KEY + "\" AND " +
 				"PARCEL_ID = " + PARCEL_ID + ";";
 	}
 	

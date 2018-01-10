@@ -84,13 +84,13 @@
         android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
         android:layout_marginTop="0dp"
-        android:text="Print Key"
+        android:text="SBL"
         android:textColor="@color/colorPrimary"
         android:textStyle="bold"
-        app:layout_constraintTop_toTopOf="@+id/textView2"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="@+id/guideline7"/>
+        app:layout_constraintLeft_toLeftOf="@+id/guideline7"
+        app:layout_constraintTop_toTopOf="@+id/textView2"/>
 
     <TextView
         android:id="@+id/textView7"
@@ -121,7 +121,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/guideline7"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.15"/>
+        app:layout_constraintGuide_percent="0.1"/>
 
     <ListView
         android:id="@+id/listView"

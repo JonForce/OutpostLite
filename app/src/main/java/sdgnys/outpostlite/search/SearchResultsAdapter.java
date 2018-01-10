@@ -1,7 +1,5 @@
 package sdgnys.outpostlite.search;
 
-import android.app.Activity;
-import android.content.Context;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,7 +12,6 @@ import java.util.ArrayList;
 
 import sdgnys.outpostlite.R;
 
-import static sdgnys.outpostlite.Logger.log;
 import static sdgnys.outpostlite.search.RowData.*;
 
 /**
@@ -76,7 +73,7 @@ class SearchResultsAdapter extends ArrayAdapter<RowData> {
 		
 		// Update the Views to contain the search data.
 		holder.SWIS.setText(rowData.values[SWIS]);
-		holder.PRINT_KEY.setText(rowData.values[PRINT_KEY]);
+		holder.PRINT_KEY.setText(rowData.values[SBL]);
 		holder.Loc_St_Nbr.setText(rowData.values[Loc_St_Nbr]);
 		holder.Street.setText(rowData.values[Street]);
 		holder.Loc_Muni_Name.setText(rowData.values[Loc_Muni_Name]);

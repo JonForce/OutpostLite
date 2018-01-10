@@ -137,8 +137,10 @@ public class StorageAccess {
 		String flag = (isDefault)? "1" : "0";
 		
 		String newName =
+				// Path to file +
 				file.getPath().substring(0, file.getPath().lastIndexOf('/')) + "/" +
-						split[0]+"_"+split[1]+"_"+split[2]+"_"+flag+"_"+split[4];
+				// New file name
+				split[0]+"_"+split[1]+"_"+split[2]+"_"+flag+"_"+split[4]+"_"+split[5];
 		
 		if (file.renameTo(new File(newName)))
 			;// Success!
@@ -147,8 +149,8 @@ public class StorageAccess {
 	}
 	
 	/** @return the filename that should be used for a new image for the parcel. */
-	public String getNewImageFileName(String SWIS, String PRINT_KEY, String PARCEL_ID) {
-		return SWIS + "_" + PRINT_KEY + "_" + PARCEL_ID + "_0_" + getUniqueImageId(context.getFilesDir(), PRINT_KEY) + ".jpg";
+	public String getNewImageFileName(String SWIS, String SBL, String PARCEL_ID) {
+		return SWIS + "_" + SBL + "_" + PARCEL_ID + "_0_" + getUniqueImageId(context.getFilesDir(), SBL) + "_NULL.jpg";
 	}
 	
 	/** Read the specified file from disk as a Bitmap. */
@@ -194,8 +196,8 @@ public class StorageAccess {
 		return f.getName().split(Pattern.quote("_"))[0];
 	}
 	
-	/** Get the PRINT_KEY from the specified File's name. */
-	public String getFilePrintKey(File f) {
+	/** Get the SBL from the specified File's name. */
+	public String getFileSBL(File f) {
 		return f.getName().split(Pattern.quote("_"))[1];
 	}
 	
@@ -211,7 +213,12 @@ public class StorageAccess {
 	
 	/** @return the unique integer that identifies this image. */
 	public int getFileID(File f) {
-		return Integer.parseInt(f.getName().split(Pattern.quote("_"))[4].split(Pattern.quote("."))[0]);
+		return Integer.parseInt(f.getName().split(Pattern.quote("_"))[4]);
+	}
+	
+	/** Get the parent DIR (in RPS) from the specified file's name */
+	public String getFileParcelDIR(File f) {
+		return f.getName().split(Pattern.quote("_"))[5].split(Pattern.quote("."))[0];
 	}
 	
 	/** Unzips the newest incoming package into internal storage. */

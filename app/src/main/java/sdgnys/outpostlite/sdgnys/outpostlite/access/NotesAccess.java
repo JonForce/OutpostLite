@@ -25,8 +25,8 @@ public class NotesAccess {
 	
 	/** This method will write to the notes for the specified parcel. It overwrites whatever
 	 * is currently there in that notes file. */
-	public void writeNotes(String SWIS, String PRINT_KEY, String PARCEL_ID, String notes) {
-		File file = getNotesFile(SWIS, PRINT_KEY, PARCEL_ID);
+	public void writeNotes(String SWIS, String SBL, String PARCEL_ID, String notes) {
+		File file = getNotesFile(SWIS, SBL, PARCEL_ID);
 		
 		if (!file.exists())
 			try {
@@ -45,9 +45,9 @@ public class NotesAccess {
 	}
 	
 	/** @return the notes for the specified parcel. */
-	public String getNotes(String SWIS, String PRINT_KEY, String PARCEL_ID) {
+	public String getNotes(String SWIS, String SBL, String PARCEL_ID) {
 		// Get a reference to where that file should be.
-		File file = getNotesFile(SWIS, PRINT_KEY, PARCEL_ID);
+		File file = getNotesFile(SWIS, SBL, PARCEL_ID);
 		
 		// If it doesn't exist,
 		if (!file.exists()) {
@@ -78,8 +78,8 @@ public class NotesAccess {
 	}
 	
 	/** @return a reference to the notes file for a specified parcel. The file may or may not exist. */
-	private File getNotesFile(String SWIS, String PRINT_KEY, String PARCEL_ID) {
-		return new File(storage.exportDirectory, "NOTES-FOR_"+SWIS+"_"+PRINT_KEY+"_"+PARCEL_ID+".txt");
+	private File getNotesFile(String SWIS, String SBL, String PARCEL_ID) {
+		return new File(storage.exportDirectory, "NOTES-FOR_"+SWIS+"_"+SBL+"_"+PARCEL_ID+".txt");
 	}
 	
 }

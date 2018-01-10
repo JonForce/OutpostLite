@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v4.content.FileProvider;
 import android.view.View;
-import android.view.ViewTreeObserver;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
@@ -20,7 +19,6 @@ import sdgnys.outpostlite.sdgnys.outpostlite.access.StorageAccess;
 
 import static android.content.res.Configuration.ORIENTATION_LANDSCAPE;
 import static sdgnys.outpostlite.Logger.logE;
-import static sdgnys.outpostlite.R.id.view;
 
 /**
  * Created by jforce on 12/27/2017.
@@ -44,7 +42,7 @@ public class ParcelImageActivity extends ParcelDataActivity {
 	protected StorageAccess storage;
 	protected ModFileAccess modFile;
 	
-	protected String SWIS, PRINT_KEY, PARCEL_ID;
+	protected String SWIS, SBL, PRINT_KEY, PARCEL_ID;
 	
 	private final int layout;
 	
@@ -76,15 +74,17 @@ public class ParcelImageActivity extends ParcelDataActivity {
 			THUMBNAIL_HEIGHT = PORTRAIT_THUMBNAIL_HEIGHT;
 		}
 		
-		// We need the swis, print key, and parcel id.
+		// We need the swis, SBL, and parcel id.
 		// Try to get them from the parcel data if we can.
 		if (parcelData != null && parcelData.get("SWIS") != null) {
 			SWIS = (String) parcelData.get("SWIS");
+			SBL = (String) parcelData.get("SBL");
 			PRINT_KEY = (String) parcelData.get("PRINT_KEY");
 			PARCEL_ID = (String) parcelData.get("Parcel_Id");
 		} else {
 			// If not, we can get them from the intent.
 			SWIS = getIntent().getExtras().getString("SWIS");
+			SBL = getIntent().getExtras().getString("SBL");
 			PRINT_KEY = getIntent().getExtras().getString("PRINT_KEY");
 			PARCEL_ID = getIntent().getExtras().getString("PARCEL_ID");
 		}
@@ -151,7 +151,7 @@ public class ParcelImageActivity extends ParcelDataActivity {
 			// File is in export directory. We need only delete it from there.
 		} else {
 			// File is stored in RPS already. We need to tell the PC to delete from RPS.
-			modFile.addDeleteImage(SWIS, PRINT_KEY, PARCEL_ID, storage.getFileID(file));
+			modFile.addDeleteImage(SWIS, SBL, PARCEL_ID, storage.getFileID(file), storage.getFileParcelDIR(file));
 		}
 		
 		file.delete();
@@ -173,7 +173,7 @@ public class ParcelImageActivity extends ParcelDataActivity {
 		
 		storage.setFileIsDefault(newDefault, true);
 		
-		modFile.addSetDefaultImage(SWIS, PRINT_KEY, PARCEL_ID, storage.getFileID(newDefault));
+		modFile.addSetDefaultImage(SWIS, SBL, PARCEL_ID, storage.getFileID(newDefault), storage.getFileParcelDIR(newDefault));
 		
 		loadImages();
 	}
@@ -185,7 +185,7 @@ public class ParcelImageActivity extends ParcelDataActivity {
 		File path = new File(getFilesDir(), "export/");
 		
 		// Get a reference to the new image file.
-		File image = new File(path, storage.getNewImageFileName(SWIS, PRINT_KEY, PARCEL_ID));
+		File image = new File(path, storage.getNewImageFileName(SWIS, SBL, PARCEL_ID));
 		imageToCompress = image;
 		// Use our FileProvider to get a Uri for our new image file.
 		Uri imageUri = FileProvider.getUriForFile(ParcelImageActivity.this, CAPTURE_IMAGE_FILE_PROVIDER, image);
@@ -254,7 +254,7 @@ public class ParcelImageActivity extends ParcelDataActivity {
 		addImages(images);
 	}
 	
-	/** Load all the images from disk onto screen that have the PRINT_KEY of this parcel. */
+	/** Load all the images from disk onto screen that have the SBL of this parcel. */
 	private void addImages(ArrayList<File> files) {
 		// Find the layout where we'll be adding all the images.
 		LinearLayout layout = ((LinearLayout)findViewById(R.id.imageLayout));
@@ -285,11 +285,11 @@ public class ParcelImageActivity extends ParcelDataActivity {
 		ArrayList<File> images = new ArrayList<>();
 		// Add all from regular storage.
 		for (File f : getFilesDir().listFiles())
-			if (storage.isImage(f) && f.getName().contains(PRINT_KEY))
+			if (storage.isImage(f) && (f.getName().contains(SBL) || f.getName().contains(PRINT_KEY)))
 				images.add(f);
 		// Add all from the export directory.
 		for (File f : storage.exportDirectory.listFiles())
-			if (storage.isImage(f) && f.getName().contains(PRINT_KEY))
+			if (storage.isImage(f) && (f.getName().contains(SBL) || f.getName().contains(PRINT_KEY)))
 				images.add(f);
 		
 		return images;

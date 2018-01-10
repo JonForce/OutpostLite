@@ -4,7 +4,10 @@ import android.provider.BaseColumns;
 
 /**
  * Created by jforce on 8/14/2017.
+ *
+ * Unused! Needs to go away I think. 1.10.2018
  */
+@Deprecated
 public class ImageDataTable extends DataTable {
 	public static final String
 			TABLE_NAME = "ImageData";
@@ -13,7 +16,7 @@ public class ImageDataTable extends DataTable {
 		columns = new String[] {
 			"IMAGE_LOC",
 			"SWIS",
-			"PRINT_KEY",
+			"SBL",
 			"PARCEL_ID",
 			"IS_DEFAULT_IMAGE"
 		},

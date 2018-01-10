@@ -8,7 +8,6 @@ import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -18,7 +17,6 @@ import sdgnys.outpostlite.ViewParcel;
 import sdgnys.outpostlite.sdgnys.outpostlite.access.ParcelXmlParser;
 import sdgnys.outpostlite.sdgnys.outpostlite.access.StorageAccess;
 
-import static sdgnys.outpostlite.Logger.log;
 import static sdgnys.outpostlite.search.RowData.*;
 
 /** This is the activity that does the searching through the SQLite database
@@ -34,7 +32,7 @@ public class SearchActivity extends AppCompatActivity {
 	private boolean
 			numberSortAscending = true,
 			nameSortAscending = true;
-	private String municipality, taxMapID, streetNumber, streetName;
+	private String municipality, SBL, streetNumber, streetName;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +41,7 @@ public class SearchActivity extends AppCompatActivity {
 		
 		// Pull in the input parameters that will be used as search terms.
 		municipality = getIntent().getStringExtra("municipality");
-		taxMapID = getIntent().getStringExtra("taxMapID");
+		SBL = getIntent().getStringExtra("SBL");
 		streetNumber = getIntent().getStringExtra("streetNumber");
 		streetName = getIntent().getStringExtra("streetName");
 		
@@ -105,7 +103,7 @@ public class SearchActivity extends AppCompatActivity {
 		// Populate the search terms into an object to be sent to the search program.
 		RowData searchTerms = new RowData();
 		searchTerms.values[Loc_Muni_Name] = municipality;
-		searchTerms.values[PRINT_KEY] = taxMapID;
+		searchTerms.values[RowData.SBL] = SBL;
 		searchTerms.values[Loc_St_Nbr] = streetNumber;
 		searchTerms.values[Street] = streetName;
 		

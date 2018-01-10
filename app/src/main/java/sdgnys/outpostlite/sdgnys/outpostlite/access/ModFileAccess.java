@@ -47,19 +47,19 @@ public class ModFileAccess {
 	}
 	
 	/** Add a record to the Mod File that instructs the PC to delete an image. */
-	public void addDeleteImage(String SWIS, String PRINT_KEY, String PARCEL_ID, int IMAGE_ID) {
-		write(DELETE_IMAGE_TAG + "," + SWIS + "," + PRINT_KEY + "," + PARCEL_ID + "," + IMAGE_ID);
+	public void addDeleteImage(String SWIS, String SBL, String PARCEL_ID, int IMAGE_ID, String DIR) {
+		write(DELETE_IMAGE_TAG + "," + SWIS + "," + SBL + "," + PARCEL_ID + "," + IMAGE_ID + "," + DIR);
 	}
 	
 	/** Add a record to the Mod File that instructs the PC to set an image to default. */
-	public void addSetDefaultImage(String SWIS, String PRINT_KEY, String PARCEL_ID, int IMAGE_ID) {
-		write(SET_DEFAULT_TAG + "," + SWIS + "," + PRINT_KEY + "," + PARCEL_ID + "," + IMAGE_ID);
+	public void addSetDefaultImage(String SWIS, String SBL, String PARCEL_ID, int IMAGE_ID, String DIR) {
+		write(SET_DEFAULT_TAG + "," + SWIS + "," + SBL + "," + PARCEL_ID + "," + IMAGE_ID + "," + DIR);
 	}
 	
 	/** Add a record to the Mod File that instructs the PC to set the value of a parcel.
 	 * This is either the Total or Land value. */
-	public void addSetValue(String SWIS, String PRINT_KEY, String PARCEL_ID, String name, String VALUE) {
-		write(SET_TAG + "," + SWIS + "," + PRINT_KEY + "," + PARCEL_ID + "," + name + "," + VALUE);
+	public void addSetValue(String SWIS, String SBL, String PARCEL_ID, String name, String VALUE) {
+		write(SET_TAG + "," + SWIS + "," + SBL + "," + PARCEL_ID + "," + name + "," + VALUE);
 	}
 	
 	/** This method simply writes a String to the Mod File. It is provided for convenience. */

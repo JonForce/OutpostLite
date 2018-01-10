@@ -92,7 +92,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/guideline6"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.15"/>
+        app:layout_constraintGuide_percent="0.1"/>
 
     <Button
         android:id="@+id/viewButton"
