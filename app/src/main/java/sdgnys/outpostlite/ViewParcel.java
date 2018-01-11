@@ -52,8 +52,8 @@ public class ViewParcel extends ParcelImageActivity {
 				intent.putExtra("SBL", SBL);
 				intent.putExtra("PARCEL_ID", PARCEL_ID);
 				intent.putExtra("address",
-						(String) ((HashMap<String, Object>)parcelData.get("Location")).get("Loc_St_Nbr") + "" +
-						(String) ((HashMap<String, Object>)parcelData.get("Location")).get("Street"));
+						((HashMap<String, Object>)parcelData.get("Location")).get("Loc_St_Nbr") + "" +
+						((HashMap<String, Object>)parcelData.get("Location")).get("Street"));
 				startActivity(intent);
 			}
 		});
