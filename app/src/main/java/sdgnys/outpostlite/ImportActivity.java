@@ -111,6 +111,7 @@ public class ImportActivity extends AppCompatActivity {
 					new ParcelDataTable(),
 					(String) parcel.get("SWIS"),
 					(String) parcel.get("SBL"),
+					(String) parcel.get("PRINT_KEY"),
 					(String) parcel.get("Parcel_Id"),
 					(String) ((HashMap<String, Object>) parcel.get("Location")).get("Loc_St_Nbr"),
 					(String) ((HashMap<String, Object>) parcel.get("Location")).get("Street"),

@@ -13,42 +13,42 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="0dp"
-        android:text="362289"
+        android:text="000000"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/PRINT_KEY"/>
+        app:layout_constraintTop_toTopOf="@+id/Street"/>
 
     <TextView
         android:id="@+id/PRINT_KEY"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="0dp"
-        android:text="234.00-2-9.00"
-        app:layout_constraintTop_toTopOf="@+id/Street"
+        android:layout_marginBottom="10dp"
         android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="@+id/guideline6"/>
+        android:text="000-00-0000"
+        app:layout_constraintLeft_toLeftOf="@+id/guideline6"
+        app:layout_constraintBottom_toBottomOf="@+id/Street"/>
 
     <TextView
         android:id="@+id/Street"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="0dp"
-        android:text="12"
-        app:layout_constraintTop_toTopOf="@+id/LOC_ST_NAME"
         android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="@+id/guideline2"/>
+        android:layout_marginTop="0dp"
+        android:text="123"
+        app:layout_constraintLeft_toLeftOf="@+id/guideline2"
+        app:layout_constraintTop_toTopOf="@+id/LOC_ST_NAME"/>
 
     <TextView
         android:id="@+id/LOC_ST_NAME"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="Sherrill"
-        app:layout_constraintTop_toTopOf="@+id/viewButton"
-        app:layout_constraintBottom_toBottomOf="@+id/viewButton"
         android:layout_marginBottom="8dp"
-        app:layout_constraintVertical_bias="0.533"
         android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="@+id/guideline23"/>
+        android:layout_marginTop="8dp"
+        android:text="Fake"
+        app:layout_constraintBottom_toBottomOf="@+id/viewButton"
+        app:layout_constraintLeft_toLeftOf="@+id/guideline23"
+        app:layout_constraintTop_toTopOf="@+id/viewButton"
+        app:layout_constraintVertical_bias="0.533"/>
 
     <TextView
         android:id="@+id/LOC_MAIL_ST_SUFF"
@@ -64,13 +64,13 @@
         android:id="@+id/LOC_MUNI_NAME"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="0dp"
-        android:text="New Hartford"
-        app:layout_constraintTop_toTopOf="@+id/viewButton"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="@+id/guideline3"
-        app:layout_constraintBottom_toBottomOf="@+id/viewButton"
         android:layout_marginBottom="0dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="0dp"
+        android:text="Fake Place"
+        app:layout_constraintBottom_toBottomOf="@+id/viewButton"
+        app:layout_constraintLeft_toLeftOf="@+id/guideline3"
+        app:layout_constraintTop_toTopOf="@+id/viewButton"
         app:layout_constraintVertical_bias="0.521"/>
 
     <android.support.constraint.Guideline
@@ -112,4 +112,14 @@
         android:id="@+id/guideline23"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.48"/>
+
+    <TextView
+        android:id="@+id/SBL"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="10dp"
+        android:text="00000.0.000.00"
+        app:layout_constraintLeft_toLeftOf="@+id/guideline6"
+        app:layout_constraintTop_toTopOf="@+id/SWIS"/>
 </android.support.constraint.ConstraintLayout>

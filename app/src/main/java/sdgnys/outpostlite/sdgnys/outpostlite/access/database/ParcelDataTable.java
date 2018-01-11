@@ -13,6 +13,7 @@ public class ParcelDataTable extends DataTable {
 			columns = new String[] {
 			"SWIS",
 			"SBL",
+			"PRINT_KEY",
 			"PARCEL_ID",
 			"Loc_St_Nbr",
 			"Street",
@@ -23,6 +24,7 @@ public class ParcelDataTable extends DataTable {
 	},
 	columnDataTypes = new String[] {
 			"char(6)",
+			"varchar(25)",
 			"varchar(25)",
 			"integer",
 			"varchar(10)",

@@ -86,7 +86,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="0dp"
-        android:text="SBL"
+        android:text="SBL / Print Key"
         android:textColor="@color/colorPrimary"
         android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="@+id/guideline7"

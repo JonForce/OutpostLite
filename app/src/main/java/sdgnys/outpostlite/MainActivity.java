@@ -124,7 +124,8 @@ public class MainActivity extends AppCompatActivity {
 	    // Get all of the search parameters from the screen.
 	    String
 			    municipality = getInputText(R.id.municipality),
-			    SBL = getInputText(R.id.sbl),
+			    SBL = getInputText(R.id.SBL),
+			    PRINT_KEY = getInputText(R.id.PRINT_KEY),
 	            streetNumber = getInputText(R.id.streetNumber),
 	            streetName = getInputText(R.id.street);
 		
@@ -132,6 +133,7 @@ public class MainActivity extends AppCompatActivity {
 	    Intent intent = new Intent(this, SearchActivity.class);
 	    intent.putExtra("municipality", municipality);
 	    intent.putExtra("SBL", SBL);
+	    intent.putExtra("PRINT_KEY", PRINT_KEY);
 	    intent.putExtra("streetNumber", streetNumber);
 	    intent.putExtra("streetName", streetName);
 	    startActivity(intent);

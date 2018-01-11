@@ -15,7 +15,7 @@ import static sdgnys.outpostlite.Logger.log;
  */
 public class Database extends SQLiteOpenHelper {
 	
-	public static final int VERSION = 6;
+	public static final int VERSION = 7;
 	public static final String NAME = "Database.db";
 	
 	public Database(Context context) {

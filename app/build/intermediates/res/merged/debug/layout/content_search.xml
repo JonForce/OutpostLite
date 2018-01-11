@@ -84,13 +84,13 @@
         android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
         android:layout_marginTop="0dp"
-        android:text="Print Key"
+        android:text="SBL / Print Key"
         android:textColor="@color/colorPrimary"
         android:textStyle="bold"
-        app:layout_constraintTop_toTopOf="@+id/textView2"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="@+id/guideline7"/>
+        app:layout_constraintLeft_toLeftOf="@+id/guideline7"
+        app:layout_constraintTop_toTopOf="@+id/textView2"/>
 
     <TextView
         android:id="@+id/textView7"

@@ -20,7 +20,21 @@
         app:layout_constraintTop_toTopOf="parent"/>
 
     <EditText
-        android:id="@+id/sbl"
+        android:id="@+id/PRINT_KEY"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="Print Key"
+        android:inputType="text"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/SBL"/>
+
+    <EditText
+        android:id="@+id/SBL"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
@@ -68,12 +82,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="0dp"
-        android:layout_marginTop="8dp"
         android:ems="10"
         android:hint="Street Number"
         android:inputType="number"
-        app:layout_constraintLeft_toLeftOf="@+id/sbl"
-        app:layout_constraintTop_toBottomOf="@+id/sbl"/>
+        app:layout_constraintLeft_toLeftOf="@+id/PRINT_KEY"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/PRINT_KEY"/>
 
     <EditText
         android:id="@+id/street"
