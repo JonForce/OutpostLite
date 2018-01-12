@@ -1,16 +1,23 @@
 package sdgnys.outpostlite.search;
 
+import android.database.Cursor;
+import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.io.File;
 import java.util.ArrayList;
 
 import sdgnys.outpostlite.R;
+import sdgnys.outpostlite.sdgnys.outpostlite.access.StorageAccess;
+import sdgnys.outpostlite.sdgnys.outpostlite.access.database.Database;
+import sdgnys.outpostlite.sdgnys.outpostlite.access.database.ImageDataTable;
 
 import static sdgnys.outpostlite.search.RowData.*;
 
@@ -27,6 +34,8 @@ class SearchResultsAdapter extends ArrayAdapter<RowData> {
 	private SearchActivity activity;
 	private int layout;
 	private ArrayList<RowData> data;
+	private StorageAccess storage;
+	private Database database;
 	
 	/** Create the tool for displaying search results in a ListView.
 	 * @param activity The context of the Activity.
@@ -35,9 +44,11 @@ class SearchResultsAdapter extends ArrayAdapter<RowData> {
 	 */
 	public SearchResultsAdapter(SearchActivity activity, int layout, ArrayList<RowData> data) {
 		super(activity, layout, data);
+		this.storage = new StorageAccess(activity);
 		this.activity = activity;
 		this.layout = layout;
 		this.data = data;
+		this.database = new Database(activity);
 	}
 	
 	/** We overwrite this method to provide a custom implementation for how views will
@@ -63,6 +74,7 @@ class SearchResultsAdapter extends ArrayAdapter<RowData> {
 			holder.Street = (TextView)row.findViewById(R.id.LOC_ST_NAME);
 			holder.Loc_Muni_Name = (TextView)row.findViewById(R.id.LOC_MUNI_NAME);
 			holder.viewButton = (Button)row.findViewById(R.id.viewButton);
+			holder.image = (ImageView)row.findViewById(R.id.thumbnail);
 			
 			row.setTag(holder);
 		} else {
@@ -80,6 +92,21 @@ class SearchResultsAdapter extends ArrayAdapter<RowData> {
 		holder.Street.setText(rowData.values[Street]);
 		holder.Loc_Muni_Name.setText(rowData.values[Loc_Muni_Name]);
 		
+		// Load the thumbnail and apply it to the image on screen.
+		
+		// Get the sequence # for the default image.
+		String SEQUENCE =
+				getSequence(rowData.values[SWIS], rowData.values[PRINT_KEY], rowData.values[PARCEL_ID]) + "";
+		// Get the image file of the default image we want to display.
+		File imageFile = storage.getDefaultImageFast(
+				rowData.values[SWIS], rowData.values[PRINT_KEY], rowData.values[SBL], rowData.values[PARCEL_ID], SEQUENCE);
+		// If we managed to do this successfully,
+		if (imageFile != null && imageFile.exists()) {
+			Bitmap map = storage.getImageBitmap(imageFile);
+			map = Bitmap.createScaledBitmap(map, 740, 493, true);
+			holder.image.setImageBitmap(map);
+		}
+		
 		holder.viewButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -96,9 +123,29 @@ class SearchResultsAdapter extends ArrayAdapter<RowData> {
 		return row;
 	}
 	
+	/** This method will query the image data table and find the sequence # of the image that is
+	 * the default. It will return -1 if it couldn't find it. */
+	private int getSequence(String SWIS, String PRINT_KEY, String PARCEL_ID) {
+		String query =
+				"SELECT * FROM " + ImageDataTable.TABLE_NAME +
+						" WHERE SBL = '" + PRINT_KEY +
+						"' AND PARCEL_ID = '" + PARCEL_ID + "'" +
+						" AND SWIS = '" + SWIS + "'" +
+						" AND IS_DEFAULT_IMAGE = 1";
+		
+		Cursor cursor = database.getReadableDatabase().rawQuery(query, null);
+		if (cursor.getCount() == 0)
+			return -1;
+		
+		cursor.moveToFirst();
+		
+		return cursor.getInt(cursor.getColumnIndex("SEQUENCE"));
+	}
+	
 	/** A simple object that contains the Views that need to be populated with search data. */
 	static class ViewHolder {
 		TextView SWIS, PRINT_KEY, SBL, Loc_St_Nbr, Street, Loc_Muni_Name;
 		Button viewButton;
+		ImageView image;
 	}
 }

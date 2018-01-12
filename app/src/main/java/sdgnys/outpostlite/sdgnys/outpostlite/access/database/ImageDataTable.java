@@ -5,9 +5,7 @@ import android.provider.BaseColumns;
 /**
  * Created by jforce on 8/14/2017.
  *
- * Unused! Needs to go away I think. 1.10.2018
  */
-@Deprecated
 public class ImageDataTable extends DataTable {
 	public static final String
 			TABLE_NAME = "ImageData";
@@ -18,12 +16,14 @@ public class ImageDataTable extends DataTable {
 			"SWIS",
 			"SBL",
 			"PARCEL_ID",
-			"IS_DEFAULT_IMAGE"
+			"IS_DEFAULT_IMAGE",
+			"SEQUENCE"
 		},
 		columnDataTypes = new String[] {
 				"varchar(100)",
 				"char(6)",
 				"varchar(25)",
+				"integer",
 				"integer",
 				"integer"
 		};

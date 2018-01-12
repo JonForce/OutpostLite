@@ -6,40 +6,34 @@
     density="xhdpi"
     format="10"
     plugin-version="2.3.3"
-    timestamp="1515701451663"
+    timestamp="1515788256766"
     token="6508492322847900650"
     verifier="COLD_SWAP_REQUESTED" >
 
     <task
         name="javac"
-        duration="375" />
+        duration="1190" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="88" />
+        duration="27" />
     <task
         name="verifier"
-        duration="20" />
+        duration="15" />
 
+    <artifact
+        location="C:\Users\jforce\AndroidStudioProjects\OutpostLite\app\build\intermediates\split-apk\debug\slices\slice_6.apk"
+        type="SPLIT" />
     <artifact
         location="C:\Users\jforce\AndroidStudioProjects\OutpostLite\app\build\intermediates\split-apk\debug\slices\slice_4.apk"
         type="SPLIT" />
 
     <build
         build-mode="FULL"
-        timestamp="1515699097898"
+        timestamp="1515786886442"
         verifier="FULL_BUILD_REQUESTED" >
-        <artifact
-            location="C:\Users\jforce\AndroidStudioProjects\OutpostLite\app\build\intermediates\split-apk\debug\slices\slice_4.apk"
-            type="SPLIT" />
-        <artifact
-            location="C:\Users\jforce\AndroidStudioProjects\OutpostLite\app\build\intermediates\split-apk\debug\slices\slice_0.apk"
-            type="SPLIT" />
-        <artifact
-            location="C:\Users\jforce\AndroidStudioProjects\OutpostLite\app\build\outputs\apk\app-debug.apk"
-            type="SPLIT_MAIN" />
         <artifact
             location="C:\Users\jforce\AndroidStudioProjects\OutpostLite\app\build\intermediates\split-apk\debug\slices\slice_2.apk"
             type="SPLIT" />
@@ -65,13 +59,11 @@
             location="C:\Users\jforce\AndroidStudioProjects\OutpostLite\app\build\intermediates\split-apk\debug\dep\dependencies.apk"
             type="SPLIT" />
         <artifact
+            location="C:\Users\jforce\AndroidStudioProjects\OutpostLite\app\build\intermediates\split-apk\debug\slices\slice_4.apk"
+            type="SPLIT" />
+        <artifact
             location="C:\Users\jforce\AndroidStudioProjects\OutpostLite\app\build\intermediates\split-apk\debug\slices\slice_1.apk"
             type="SPLIT" />
-    </build>
-    <build
-        build-mode="COLD"
-        timestamp="1515699588401"
-        verifier="COLD_SWAP_REQUESTED" >
         <artifact
             location="C:\Users\jforce\AndroidStudioProjects\OutpostLite\app\build\intermediates\split-apk\debug\slices\slice_0.apk"
             type="SPLIT" />
@@ -81,8 +73,11 @@
     </build>
     <build
         build-mode="COLD"
-        timestamp="1515701451663"
+        timestamp="1515788256766"
         verifier="COLD_SWAP_REQUESTED" >
+        <artifact
+            location="C:\Users\jforce\AndroidStudioProjects\OutpostLite\app\build\intermediates\split-apk\debug\slices\slice_6.apk"
+            type="SPLIT" />
         <artifact
             location="C:\Users\jforce\AndroidStudioProjects\OutpostLite\app\build\intermediates\split-apk\debug\slices\slice_4.apk"
             type="SPLIT" />

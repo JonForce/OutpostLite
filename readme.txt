@@ -7,7 +7,7 @@ It is NOT the place to look for install or usage instructions.
 
 
 OutpostLite was originally written by Jon Force.
-If you're from the future and not working for the company anymore (and you're having trouble with
+If you're from the future and I'm not working for the company anymore (and you're having trouble with
 the codebase) you can contact me here : vanaficionado@gmail.com
 
 The github repository lives at https://github.com/JonForce/OutpostLite

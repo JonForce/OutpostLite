@@ -15,8 +15,10 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.FilenameFilter;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.regex.Pattern;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
@@ -32,10 +34,12 @@ public class StorageAccess {
 	
 	public final File exportDirectory;
  	private AppCompatActivity context;
+	private ArrayList<String> knownDIRs;
 	
 	public StorageAccess(AppCompatActivity context) {
 		this.context = context;
 		requestStorageAccess();
+		knownDIRs = new ArrayList<>();
 
 		exportDirectory = new File(context.getFilesDir().getPath() + "/" + EXPORT_DIRECTORY_NAME);
 		if (!exportDirectory.exists())
@@ -49,6 +53,62 @@ public class StorageAccess {
 			return false;
 		else
 			return endingSplit[endingSplit.length - 1].equals("jpg");
+	}
+	
+	public File getDefaultImageFast(String SWIS, String PRINT_KEY, String SBL, String PARCEL_ID, String sequence) {
+		// First check the export directory.
+		File exportDefault = null;
+		for (File f : exportDirectory.listFiles())
+			if (isImage(f) && f.getName().contains(SBL) && f.getName().contains(PARCEL_ID) && getFileIsDefault(f))
+				exportDefault = f;
+		if (exportDefault != null)
+			return exportDefault;
+		
+		// Then try to guess the location of the image.
+		for (String DIR : knownDIRs) {
+			String path =
+					context.getFilesDir().getPath() + "/" + SWIS + "_" + PRINT_KEY + "_" + PARCEL_ID + "_1_" + sequence + "_" + DIR + ".jpg";
+			File defaultGuess = new File(path);
+			if (defaultGuess.exists())
+				return defaultGuess;
+		}
+		
+		File image = null;
+		
+		// Finally, brute force it.
+		for (File f : context.getFilesDir().listFiles())
+			if (isImage(f) && f.getName().contains(PRINT_KEY) && f.getName().contains(PARCEL_ID) && getFileIsDefault(f)) {
+				image = f;
+				
+				// Get the image's dir so we don't have to brute force it again.
+				String DIR = getFileParcelDIR(f);
+				if (!knownDIRs.contains(DIR))
+					knownDIRs.add(DIR);
+				
+				break;
+			}
+		
+		return image;
+	}
+	
+	/** @return the image marked default for the given parcel. May return null if there is no default */
+	public File getDefaultImage(final String PRINT_KEY, final String SBL) {
+		File image = null;
+		
+		// First search regular images
+		for (File f : context.getFilesDir().listFiles())
+			if (isImage(f) && (f.getName().contains(SBL) || f.getName().contains(PRINT_KEY)) && getFileIsDefault(f)) {
+				image = f;
+				break;
+			}
+		
+		// Next check the export directory (if we have to)
+		if (image == null)
+			for (File f : exportDirectory.listFiles())
+				if (isImage(f) && (f.getName().contains(SBL) || f.getName().contains(PRINT_KEY)) && getFileIsDefault(f))
+					image = f;
+		
+		return image;
 	}
 	
 	/** This lists all the internally stored files on the device for this application. */

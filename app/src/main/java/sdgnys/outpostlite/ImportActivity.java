@@ -62,10 +62,10 @@ public class ImportActivity extends AppCompatActivity {
 			public void run() {
 				setStatus("Importing package...");
 				
-				setStatus("(1/5) Deleting current package data...");
+				setStatus("(1/6) Deleting current package data...");
 				storage.deleteLocalFiles();
 				
-				setStatus("(2/5) Unzipping incoming package.");
+				setStatus("(2/6) Unzipping incoming package.");
 				storage.loadPackage(new Callback<Float>() {
 					@Override
 					public void callback(Float data) {
@@ -73,11 +73,11 @@ public class ImportActivity extends AppCompatActivity {
 					}
 				});
 				
-				setStatus("(3/5) Parsing the package's parcel data...");
+				setStatus("(3/6) Parsing the package's parcel data...");
 				ParcelXmlParser parcelXmlParser = new ParcelXmlParser(storage);
 				parcelXmlParser.beginParsing();
 				
-				setStatus("(4/5) Parsing the package's image data...");
+				setStatus("(4/6) Parsing the package's image data...");
 				CSVParser imageDataParser = new CSVParser(
 						storage.getInternalFile("image_data.txt"), "|", "\n");
 				imageDataParser.beginParsing(new Callback<Float>() {
@@ -88,13 +88,13 @@ public class ImportActivity extends AppCompatActivity {
 				});
 				
 				
-				setStatus("(5/5) Inserting package's parcel data into database...");
+				setStatus("(5/6) Inserting package's parcel data into database...");
 				database.resetDatabase(database.getWritableDatabase());
 				
 				fillDatabase(database, parcelXmlParser.getParcels());
 				
-				//setStatus("(5/10) Inserting package's image data into database...");
-				//fillImageDatabase(database, imageDataParser, new ImageDataTable());
+				setStatus("(6/6) Inserting package's image data into database...");
+				fillImageDatabase(database, imageDataParser, new ImageDataTable());
 				
 				setStatus("Successfully finished!");
 				showCheckmark();
