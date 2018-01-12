@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -52,8 +53,17 @@ public class SearchActivity extends AppCompatActivity {
 		parser.beginParsing();
 		parcelData = parser.getParcels();
 		
+		findViewById(R.id.closeButton).setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				hideZoomedImage();
+			}
+		});
+		
 		setupSortButtons();
 		search();
+		
+		hideZoomedImage();
 	}
 	
 	/** This event should be activated when a search result is pressed or selected. It will
@@ -115,7 +125,13 @@ public class SearchActivity extends AppCompatActivity {
 		if (searchResults.size() > 0) {
 			// Set the adapter of the ListView to be a search results adapter.
 			// This is so the ListView can display the search results.
-			getListView().setAdapter(new SearchResultsAdapter(this, R.layout.search_result, searchResults));
+			getListView().setAdapter(new SearchResultsAdapter(this, R.layout.search_result, searchResults) {
+				@Override
+				protected void onImagePress(ImageView pressedView) {
+					((ImageView) findViewById(R.id.zoomedImage)).setImageDrawable(pressedView.getDrawable());
+					showZoomedImage();
+				}
+			});
 			
 			getListView().setOnItemClickListener(new AdapterView.OnItemClickListener()
 			{
@@ -128,6 +144,15 @@ public class SearchActivity extends AppCompatActivity {
 		} else {
 			findViewById(R.id.noResultsLabel).setVisibility(View.VISIBLE);
 		}
+	}
+	
+	private void showZoomedImage() {
+		findViewById(R.id.zoomedImage).setVisibility(View.VISIBLE);
+		findViewById(R.id.closeButton).setVisibility(View.VISIBLE);
+	}
+	private void hideZoomedImage() {
+		findViewById(R.id.zoomedImage).setVisibility(View.INVISIBLE);
+		findViewById(R.id.closeButton).setVisibility(View.INVISIBLE);
 	}
 	
 	/** @return the list view. */

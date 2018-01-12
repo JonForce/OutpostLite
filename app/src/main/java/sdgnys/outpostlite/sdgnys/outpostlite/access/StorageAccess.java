@@ -55,7 +55,8 @@ public class StorageAccess {
 			return endingSplit[endingSplit.length - 1].equals("jpg");
 	}
 	
-	public File getDefaultImageFast(String SWIS, String PRINT_KEY, String SBL, String PARCEL_ID, String sequence) {
+	/** @return the default image for the specified parcel. */
+	public File getDefaultImage(String SWIS, String PRINT_KEY, String SBL, String PARCEL_ID, String sequence) {
 		// First check the export directory.
 		File exportDefault = null;
 		for (File f : exportDirectory.listFiles())
@@ -73,9 +74,8 @@ public class StorageAccess {
 				return defaultGuess;
 		}
 		
-		File image = null;
-		
 		// Finally, brute force it.
+		File image = null;
 		for (File f : context.getFilesDir().listFiles())
 			if (isImage(f) && f.getName().contains(PRINT_KEY) && f.getName().contains(PARCEL_ID) && getFileIsDefault(f)) {
 				image = f;
@@ -87,26 +87,6 @@ public class StorageAccess {
 				
 				break;
 			}
-		
-		return image;
-	}
-	
-	/** @return the image marked default for the given parcel. May return null if there is no default */
-	public File getDefaultImage(final String PRINT_KEY, final String SBL) {
-		File image = null;
-		
-		// First search regular images
-		for (File f : context.getFilesDir().listFiles())
-			if (isImage(f) && (f.getName().contains(SBL) || f.getName().contains(PRINT_KEY)) && getFileIsDefault(f)) {
-				image = f;
-				break;
-			}
-		
-		// Next check the export directory (if we have to)
-		if (image == null)
-			for (File f : exportDirectory.listFiles())
-				if (isImage(f) && (f.getName().contains(SBL) || f.getName().contains(PRINT_KEY)) && getFileIsDefault(f))
-					image = f;
 		
 		return image;
 	}

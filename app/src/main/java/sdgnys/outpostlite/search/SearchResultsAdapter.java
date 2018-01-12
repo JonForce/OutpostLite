@@ -26,7 +26,9 @@ import static sdgnys.outpostlite.search.RowData.*;
  *
  * Created by jforce on 8/10/2017.
  */
-class SearchResultsAdapter extends ArrayAdapter<RowData> {
+abstract class SearchResultsAdapter extends ArrayAdapter<RowData> {
+	
+	protected abstract void onImagePress(ImageView view);
 	
 	private static final int
 		DARK_BG_R = 232, DARK_BG_G = 240, DARK_BG_B = 255;
@@ -98,13 +100,19 @@ class SearchResultsAdapter extends ArrayAdapter<RowData> {
 		String SEQUENCE =
 				getSequence(rowData.values[SWIS], rowData.values[PRINT_KEY], rowData.values[PARCEL_ID]) + "";
 		// Get the image file of the default image we want to display.
-		File imageFile = storage.getDefaultImageFast(
+		File imageFile = storage.getDefaultImage(
 				rowData.values[SWIS], rowData.values[PRINT_KEY], rowData.values[SBL], rowData.values[PARCEL_ID], SEQUENCE);
 		// If we managed to do this successfully,
 		if (imageFile != null && imageFile.exists()) {
 			Bitmap map = storage.getImageBitmap(imageFile);
 			map = Bitmap.createScaledBitmap(map, 740, 493, true);
 			holder.image.setImageBitmap(map);
+			holder.image.setOnClickListener(new View.OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					onImagePress((ImageView) v);
+				}
+			});
 		}
 		
 		holder.viewButton.setOnClickListener(new View.OnClickListener() {
