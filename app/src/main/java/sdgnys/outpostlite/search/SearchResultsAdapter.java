@@ -106,6 +106,7 @@ abstract class SearchResultsAdapter extends ArrayAdapter<RowData> {
 		if (imageFile != null && imageFile.exists()) {
 			Bitmap map = storage.getImageBitmap(imageFile);
 			map = Bitmap.createScaledBitmap(map, 740, 493, true);
+			holder.image.setVisibility(View.VISIBLE);
 			holder.image.setImageBitmap(map);
 			holder.image.setOnClickListener(new View.OnClickListener() {
 				@Override
@@ -113,6 +114,8 @@ abstract class SearchResultsAdapter extends ArrayAdapter<RowData> {
 					onImagePress((ImageView) v);
 				}
 			});
+		} else {
+			holder.image.setVisibility(View.INVISIBLE);
 		}
 		
 		holder.viewButton.setOnClickListener(new View.OnClickListener() {

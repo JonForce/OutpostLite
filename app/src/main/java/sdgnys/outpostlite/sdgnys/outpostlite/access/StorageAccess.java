@@ -54,7 +54,7 @@ public class StorageAccess {
 		else
 			return endingSplit[endingSplit.length - 1].equals("jpg");
 	}
-	
+
 	/** @return the default image for the specified parcel. */
 	public File getDefaultImage(String SWIS, String PRINT_KEY, String SBL, String PARCEL_ID, String sequence) {
 		// First check the export directory.

@@ -285,11 +285,17 @@ public class ParcelImageActivity extends ParcelDataActivity {
 		ArrayList<File> images = new ArrayList<>();
 		// Add all from regular storage.
 		for (File f : getFilesDir().listFiles())
-			if (storage.isImage(f) && (f.getName().contains(SBL) || f.getName().contains(PRINT_KEY)))
+			if (storage.isImage(f) &&
+					f.getName().contains(SWIS) &&
+					f.getName().contains(PARCEL_ID) &&
+					(f.getName().contains(SBL) || f.getName().contains(PRINT_KEY)))
 				images.add(f);
 		// Add all from the export directory.
 		for (File f : storage.exportDirectory.listFiles())
-			if (storage.isImage(f) && (f.getName().contains(SBL) || f.getName().contains(PRINT_KEY)))
+			if (storage.isImage(f) &&
+					f.getName().contains(SWIS) &&
+					f.getName().contains(PARCEL_ID) &&
+					(f.getName().contains(SBL) || f.getName().contains(PRINT_KEY)))
 				images.add(f);
 		
 		return images;

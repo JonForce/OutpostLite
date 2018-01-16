@@ -20,20 +20,20 @@
         "source": "C:\\Users\\jforce\\.android\\build-cache\\1bf3ac7b2b370481d5365a81f494b73bf2ea03b1\\output\\res\\drawable\\abc_item_background_holo_dark.xml"
     },
     {
-        "merged": "C:\\Users\\jforce\\AndroidStudioProjects\\OutpostLite\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\common_google_signin_btn_icon_light.xml",
-        "source": "C:\\Users\\jforce\\.android\\build-cache\\eaae77e446ca737e79bf4579bee4037c9f5d0d1e\\output\\res\\drawable\\common_google_signin_btn_icon_light.xml"
-    },
-    {
         "merged": "C:\\Users\\jforce\\AndroidStudioProjects\\OutpostLite\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\navigation_empty_icon.xml",
         "source": "C:\\Users\\jforce\\.android\\build-cache\\8702f7664f6704d783fef3516789a29a90580edc\\output\\res\\drawable\\navigation_empty_icon.xml"
     },
     {
-        "merged": "C:\\Users\\jforce\\AndroidStudioProjects\\OutpostLite\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_item_background_holo_light.xml",
-        "source": "C:\\Users\\jforce\\.android\\build-cache\\1bf3ac7b2b370481d5365a81f494b73bf2ea03b1\\output\\res\\drawable\\abc_item_background_holo_light.xml"
+        "merged": "C:\\Users\\jforce\\AndroidStudioProjects\\OutpostLite\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\common_google_signin_btn_icon_light.xml",
+        "source": "C:\\Users\\jforce\\.android\\build-cache\\eaae77e446ca737e79bf4579bee4037c9f5d0d1e\\output\\res\\drawable\\common_google_signin_btn_icon_light.xml"
     },
     {
         "merged": "C:\\Users\\jforce\\AndroidStudioProjects\\OutpostLite\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_ic_voice_search_api_material.xml",
         "source": "C:\\Users\\jforce\\.android\\build-cache\\1bf3ac7b2b370481d5365a81f494b73bf2ea03b1\\output\\res\\drawable\\abc_ic_voice_search_api_material.xml"
+    },
+    {
+        "merged": "C:\\Users\\jforce\\AndroidStudioProjects\\OutpostLite\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_item_background_holo_light.xml",
+        "source": "C:\\Users\\jforce\\.android\\build-cache\\1bf3ac7b2b370481d5365a81f494b73bf2ea03b1\\output\\res\\drawable\\abc_item_background_holo_light.xml"
     },
     {
         "merged": "C:\\Users\\jforce\\AndroidStudioProjects\\OutpostLite\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_ic_go_search_api_material.xml",
@@ -100,12 +100,12 @@
         "source": "C:\\Users\\jforce\\.android\\build-cache\\1bf3ac7b2b370481d5365a81f494b73bf2ea03b1\\output\\res\\drawable\\abc_btn_default_mtrl_shape.xml"
     },
     {
-        "merged": "C:\\Users\\jforce\\AndroidStudioProjects\\OutpostLite\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_btn_check_material.xml",
-        "source": "C:\\Users\\jforce\\.android\\build-cache\\1bf3ac7b2b370481d5365a81f494b73bf2ea03b1\\output\\res\\drawable\\abc_btn_check_material.xml"
-    },
-    {
         "merged": "C:\\Users\\jforce\\AndroidStudioProjects\\OutpostLite\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_ratingbar_material.xml",
         "source": "C:\\Users\\jforce\\.android\\build-cache\\1bf3ac7b2b370481d5365a81f494b73bf2ea03b1\\output\\res\\drawable\\abc_ratingbar_material.xml"
+    },
+    {
+        "merged": "C:\\Users\\jforce\\AndroidStudioProjects\\OutpostLite\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_btn_check_material.xml",
+        "source": "C:\\Users\\jforce\\.android\\build-cache\\1bf3ac7b2b370481d5365a81f494b73bf2ea03b1\\output\\res\\drawable\\abc_btn_check_material.xml"
     },
     {
         "merged": "C:\\Users\\jforce\\AndroidStudioProjects\\OutpostLite\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_cab_background_top_material.xml",
