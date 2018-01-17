@@ -31,6 +31,7 @@ public class SearchActivity extends AppCompatActivity {
 	
 	private ArrayList<RowData> searchResults;
 	private ArrayList<HashMap<String, Object>> parcelData;
+	private SearchResultsAdapter adapter;
 	private boolean
 			numberSortAscending = true,
 			nameSortAscending = true;
@@ -64,6 +65,15 @@ public class SearchActivity extends AppCompatActivity {
 		search();
 		
 		hideZoomedImage();
+	}
+	
+	@Override
+	public void onResume() {
+		super.onResume();
+		
+		// This will update the list view if a change in thumbnail occurred.
+		if (adapter != null)
+			adapter.notifyDataSetChanged();
 	}
 	
 	/** This event should be activated when a search result is pressed or selected. It will
@@ -125,13 +135,14 @@ public class SearchActivity extends AppCompatActivity {
 		if (searchResults.size() > 0) {
 			// Set the adapter of the ListView to be a search results adapter.
 			// This is so the ListView can display the search results.
-			getListView().setAdapter(new SearchResultsAdapter(this, R.layout.search_result, searchResults) {
+			adapter = new SearchResultsAdapter(this, R.layout.search_result, searchResults) {
 				@Override
 				protected void onImagePress(ImageView pressedView) {
 					((ImageView) findViewById(R.id.zoomedImage)).setImageDrawable(pressedView.getDrawable());
 					showZoomedImage();
 				}
-			});
+			};
+			getListView().setAdapter(adapter);
 			
 			getListView().setOnItemClickListener(new AdapterView.OnItemClickListener()
 			{
