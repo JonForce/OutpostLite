@@ -35,7 +35,7 @@ public class SearchActivity extends AppCompatActivity {
 	private boolean
 			numberSortAscending = true,
 			nameSortAscending = true;
-	private String municipality, PRINT_KEY, SBL, streetNumber, streetName;
+	private String PRINT_KEY, SBL, streetNumber, streetName;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +43,6 @@ public class SearchActivity extends AppCompatActivity {
 		setContentView(R.layout.activity_search);
 		
 		// Pull in the input parameters that will be used as search terms.
-		municipality = getIntent().getStringExtra("municipality");
 		SBL = getIntent().getStringExtra("SBL");
 		PRINT_KEY = getIntent().getStringExtra("PRINT_KEY");
 		streetNumber = getIntent().getStringExtra("streetNumber");
@@ -124,7 +123,6 @@ public class SearchActivity extends AppCompatActivity {
 	private void search() {
 		// Populate the search terms into an object to be sent to the search program.
 		RowData searchTerms = new RowData();
-		searchTerms.values[Loc_Muni_Name] = municipality;
 		searchTerms.values[RowData.PRINT_KEY] = PRINT_KEY;
 		searchTerms.values[Loc_St_Nbr] = streetNumber;
 		searchTerms.values[Street] = streetName;

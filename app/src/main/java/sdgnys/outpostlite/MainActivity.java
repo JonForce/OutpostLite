@@ -10,7 +10,10 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import java.io.File;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -29,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
 	private static final int CHECK_FOR_PACKAGE_FREQUENCY = 700;
 	
 	private boolean displayedPackageNotice = false;
-
+	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -102,6 +105,16 @@ public class MainActivity extends AppCompatActivity {
 				    });
 		    }
 	    }, /** Delay */ 0, CHECK_FOR_PACKAGE_FREQUENCY);
+	
+	    // This code is unfortunately needed to get the SWIS.
+	    StorageAccess storage = new StorageAccess(this);
+	    String SWIS = "";
+	    for (File f : getFilesDir().listFiles())
+	    	if (storage.isImage(f)) {
+			    SWIS = storage.getFileSWIS(f);
+			    break;
+		    }
+	    ((TextView) findViewById(R.id.SWIS)).setText(SWIS);
 	    
 	    log("Launched OutpostLite");
     }
@@ -123,7 +136,6 @@ public class MainActivity extends AppCompatActivity {
     private void search() {
 	    // Get all of the search parameters from the screen.
 	    String
-			    municipality = getInputText(R.id.municipality),
 			    SBL = getInputText(R.id.SBL),
 			    PRINT_KEY = getInputText(R.id.PRINT_KEY),
 	            streetNumber = getInputText(R.id.streetNumber),
@@ -131,7 +143,6 @@ public class MainActivity extends AppCompatActivity {
 		
 	    // Start the search activity with all of the parameters in the intent.
 	    Intent intent = new Intent(this, SearchActivity.class);
-	    intent.putExtra("municipality", municipality);
 	    intent.putExtra("SBL", SBL);
 	    intent.putExtra("PRINT_KEY", PRINT_KEY);
 	    intent.putExtra("streetNumber", streetNumber);
