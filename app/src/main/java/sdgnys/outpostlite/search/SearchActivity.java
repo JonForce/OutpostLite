@@ -35,7 +35,7 @@ public class SearchActivity extends AppCompatActivity {
 	private boolean
 			numberSortAscending = true,
 			nameSortAscending = true;
-	private String PRINT_KEY, SBL, streetNumber, streetName;
+	private String PRINT_KEY, streetNumber, streetName;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +43,6 @@ public class SearchActivity extends AppCompatActivity {
 		setContentView(R.layout.activity_search);
 		
 		// Pull in the input parameters that will be used as search terms.
-		SBL = getIntent().getStringExtra("SBL");
 		PRINT_KEY = getIntent().getStringExtra("PRINT_KEY");
 		streetNumber = getIntent().getStringExtra("streetNumber");
 		streetName = getIntent().getStringExtra("streetName");

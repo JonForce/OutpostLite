@@ -105,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
 				    });
 		    }
 	    }, /** Delay */ 0, CHECK_FOR_PACKAGE_FREQUENCY);
-	
+		
 	    // This code is unfortunately needed to get the SWIS.
 	    StorageAccess storage = new StorageAccess(this);
 	    String SWIS = "";
@@ -136,14 +136,12 @@ public class MainActivity extends AppCompatActivity {
     private void search() {
 	    // Get all of the search parameters from the screen.
 	    String
-			    SBL = getInputText(R.id.SBL),
 			    PRINT_KEY = getInputText(R.id.PRINT_KEY),
 	            streetNumber = getInputText(R.id.streetNumber),
 	            streetName = getInputText(R.id.street);
 		
 	    // Start the search activity with all of the parameters in the intent.
 	    Intent intent = new Intent(this, SearchActivity.class);
-	    intent.putExtra("SBL", SBL);
 	    intent.putExtra("PRINT_KEY", PRINT_KEY);
 	    intent.putExtra("streetNumber", streetNumber);
 	    intent.putExtra("streetName", streetName);

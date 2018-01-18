@@ -108,6 +108,7 @@
         android:layout_marginLeft="8dp"
         android:layout_marginStart="8dp"
         android:text="0.00.0.0-90.0.0.0"
+        android:textStyle="bold"
         android:visibility="visible"
         app:layout_constraintLeft_toLeftOf="@+id/guideline"
         app:layout_constraintTop_toTopOf="@+id/textView11"/>
@@ -142,6 +143,7 @@
         android:layout_marginLeft="8dp"
         android:layout_marginStart="8dp"
         android:text="N/A"
+        android:textStyle="bold"
         android:visibility="visible"
         app:layout_constraintLeft_toLeftOf="@+id/guideline12"
         app:layout_constraintTop_toTopOf="@+id/textView14"/>
@@ -166,6 +168,7 @@
         android:layout_marginLeft="9dp"
         android:layout_marginStart="9dp"
         android:text="Fake Lane"
+        android:textStyle="bold"
         android:visibility="visible"
         app:layout_constraintLeft_toRightOf="@+id/Loc_St_Nbr"
         app:layout_constraintTop_toTopOf="@+id/textView15"/>
@@ -204,6 +207,7 @@
         android:layout_marginLeft="8dp"
         android:layout_marginStart="8dp"
         android:text="ExampleName"
+        android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="@+id/guideline"
         app:layout_constraintTop_toTopOf="@+id/text"/>
 
@@ -214,6 +218,7 @@
         android:layout_marginLeft="8dp"
         android:layout_marginStart="8dp"
         android:text="12"
+        android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="@+id/guideline12"
         app:layout_constraintTop_toTopOf="@+id/textView15"/>
 
@@ -374,6 +379,7 @@
         android:layout_marginLeft="8dp"
         android:layout_marginTop="0dp"
         android:text="123"
+        android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="@+id/guideline12"
         app:layout_constraintTop_toTopOf="@+id/textView29"/>
 
@@ -396,6 +402,7 @@
         android:layout_marginLeft="8dp"
         android:layout_marginTop="0dp"
         android:text="SomeSchool"
+        android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="@+id/guideline"
         app:layout_constraintTop_toTopOf="@+id/textView31"/>
 
@@ -474,6 +481,7 @@
         android:layout_marginLeft="8dp"
         android:layout_marginTop="0dp"
         android:text="123"
+        android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="@+id/guideline"
         app:layout_constraintTop_toTopOf="@+id/textView41"/>
 
@@ -496,6 +504,7 @@
         android:layout_marginLeft="8dp"
         android:layout_marginTop="0dp"
         android:text="123"
+        android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="@+id/guideline12"
         app:layout_constraintTop_toTopOf="@+id/textView43"/>
 
@@ -518,6 +527,7 @@
         android:layout_marginLeft="8dp"
         android:layout_marginTop="0dp"
         android:text="123"
+        android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="@+id/guideline"
         app:layout_constraintTop_toTopOf="@+id/textView45"/>
 
@@ -540,6 +550,7 @@
         android:layout_marginLeft="16dp"
         android:layout_marginTop="0dp"
         android:text="X"
+        android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="@+id/guideline12"
         app:layout_constraintTop_toTopOf="@+id/textView47"/>
 
@@ -560,6 +571,7 @@
         android:layout_marginLeft="2dp"
         android:layout_marginTop="0dp"
         android:text="X"
+        android:textStyle="bold"
         app:layout_constraintLeft_toRightOf="@+id/textView49"
         app:layout_constraintTop_toTopOf="@+id/textView49"/>
 
@@ -594,6 +606,7 @@
         android:layout_marginLeft="8dp"
         android:layout_marginTop="0dp"
         android:text="NULL"
+        android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="@+id/guideline"
         app:layout_constraintTop_toTopOf="@+id/textView51"/>
 
@@ -604,6 +617,7 @@
         android:layout_marginLeft="8dp"
         android:layout_marginTop="0dp"
         android:text="NULL"
+        android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="@+id/guideline12"
         app:layout_constraintTop_toTopOf="@+id/textView52"/>
 
@@ -638,6 +652,7 @@
         android:layout_marginLeft="8dp"
         android:layout_marginTop="0dp"
         android:text="NULL"
+        android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="@+id/guideline"
         app:layout_constraintTop_toTopOf="@+id/textView55"/>
 
@@ -648,6 +663,7 @@
         android:layout_marginLeft="8dp"
         android:layout_marginTop="0dp"
         android:text="NULL"
+        android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="@+id/guideline12"
         app:layout_constraintTop_toTopOf="@+id/textView56"/>
 
@@ -686,6 +702,7 @@
         android:layout_marginLeft="8dp"
         android:layout_marginTop="0dp"
         android:text="NULL"
+        android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="@+id/guideline"
         app:layout_constraintTop_toTopOf="@+id/textView60"/>
 
@@ -740,6 +757,7 @@
         android:layout_marginLeft="8dp"
         android:layout_marginTop="0dp"
         android:text="NULL"
+        android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="@+id/guideline12"
         app:layout_constraintTop_toTopOf="@+id/textView62"/>
 
@@ -762,6 +780,7 @@
         android:layout_marginLeft="8dp"
         android:layout_marginTop="0dp"
         android:text="1234"
+        android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="@+id/guideline12"
         app:layout_constraintTop_toTopOf="@+id/textView64"/>
 
@@ -784,6 +803,7 @@
         android:layout_marginLeft="8dp"
         android:layout_marginTop="0dp"
         android:text="NULL"
+        android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="@+id/guideline"
         app:layout_constraintTop_toTopOf="@+id/textView66"/>
 
@@ -806,6 +826,7 @@
         android:layout_marginLeft="8dp"
         android:layout_marginTop="-1dp"
         android:text="NULL"
+        android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="@+id/guideline12"
         app:layout_constraintTop_toTopOf="@+id/textView68"/>
 

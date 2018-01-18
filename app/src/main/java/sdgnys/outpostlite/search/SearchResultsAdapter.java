@@ -71,7 +71,6 @@ abstract class SearchResultsAdapter extends ArrayAdapter<RowData> {
 			holder = new ViewHolder();
 			holder.SWIS = (TextView)row.findViewById(R.id.SWIS);
 			holder.PRINT_KEY = (TextView)row.findViewById(R.id.PRINT_KEY);
-			holder.SBL = (TextView)row.findViewById(R.id.SBL);
 			holder.Loc_St_Nbr = (TextView)row.findViewById(R.id.Street);
 			holder.Street = (TextView)row.findViewById(R.id.LOC_ST_NAME);
 			holder.Loc_Muni_Name = (TextView)row.findViewById(R.id.LOC_MUNI_NAME);
@@ -89,7 +88,6 @@ abstract class SearchResultsAdapter extends ArrayAdapter<RowData> {
 		// Update the Views to contain the search data.
 		holder.SWIS.setText(rowData.values[SWIS]);
 		holder.PRINT_KEY.setText(rowData.values[PRINT_KEY]);
-		holder.SBL.setText(rowData.values[SBL]);
 		holder.Loc_St_Nbr.setText(rowData.values[Loc_St_Nbr]);
 		holder.Street.setText(rowData.values[Street]);
 		holder.Loc_Muni_Name.setText(rowData.values[Loc_Muni_Name]);
@@ -155,7 +153,7 @@ abstract class SearchResultsAdapter extends ArrayAdapter<RowData> {
 	
 	/** A simple object that contains the Views that need to be populated with search data. */
 	static class ViewHolder {
-		TextView SWIS, PRINT_KEY, SBL, Loc_St_Nbr, Street, Loc_Muni_Name;
+		TextView SWIS, PRINT_KEY, Loc_St_Nbr, Street, Loc_Muni_Name;
 		Button viewButton;
 		ImageView image;
 	}

@@ -31,6 +31,8 @@
         android:layout_marginTop="24dp"
         android:text="Year Built :"
         android:textColor="@color/colorPrimary"
+        android:textSize="15sp"
+        android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
@@ -38,11 +40,13 @@
         android:id="@+id/Yr_Built"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
         android:layout_marginTop="24dp"
         android:text="NULL"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="@+id/guideline15"/>
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="@+id/guideline15"
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <TextView
         android:id="@+id/textView10"
@@ -52,6 +56,8 @@
         android:layout_marginTop="24dp"
         android:text="Grade :"
         android:textColor="@color/colorPrimary"
+        android:textSize="15sp"
+        android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="@+id/guideline14"
         app:layout_constraintTop_toTopOf="parent"/>
 
@@ -73,7 +79,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/guideline16"
-        app:layout_constraintGuide_begin="355dp"
+        app:layout_constraintGuide_begin="364dp"
         android:orientation="vertical"/>
 
     <TextView
@@ -83,6 +89,8 @@
         android:layout_marginLeft="9dp"
         android:layout_marginTop="24dp"
         android:text="NULL"
+        android:textSize="15sp"
+        android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="@+id/guideline16"
         app:layout_constraintTop_toTopOf="parent"/>
 
@@ -94,6 +102,8 @@
         android:layout_marginTop="24dp"
         android:text="Str Code :"
         android:textColor="@color/colorPrimary"
+        android:textSize="15sp"
+        android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="@+id/guideline14"
         app:layout_constraintTop_toBottomOf="@+id/textView23"/>
 
@@ -104,6 +114,8 @@
         android:layout_marginLeft="8dp"
         android:layout_marginTop="0dp"
         android:text="NULL"
+        android:textSize="15sp"
+        android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="@+id/guideline16"
         app:layout_constraintTop_toTopOf="@+id/textView17"/>
 
@@ -111,12 +123,14 @@
         android:id="@+id/textView19"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="24dp"
         android:text="Condition :"
         android:textColor="@color/colorPrimaryDark"
-        android:layout_marginTop="24dp"
-        app:layout_constraintTop_toBottomOf="@+id/textView21"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="parent"/>
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView21"/>
 
     <android.support.constraint.Guideline
         android:layout_width="wrap_content"
@@ -129,10 +143,12 @@
         android:id="@+id/Overall_Cond"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="NULL"
         android:layout_marginLeft="8dp"
+        android:layout_marginTop="23dp"
+        android:text="NULL"
+        android:textSize="15sp"
+        android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="@+id/guideline15"
-        android:layout_marginTop="24dp"
         app:layout_constraintTop_toBottomOf="@+id/Size"/>
 
     <android.support.constraint.Guideline
@@ -157,6 +173,8 @@
         android:layout_marginTop="16dp"
         android:text="Size :"
         android:textColor="@color/colorPrimary"
+        android:textSize="15sp"
+        android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView9"/>
 
@@ -167,6 +185,8 @@
         android:layout_marginLeft="8dp"
         android:layout_marginTop="0dp"
         android:text="NULL"
+        android:textSize="15sp"
+        android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="@+id/guideline15"
         app:layout_constraintTop_toTopOf="@+id/textView21"/>
 
@@ -178,6 +198,8 @@
         android:layout_marginTop="0dp"
         android:text="RCN : "
         android:textColor="@color/colorPrimary"
+        android:textSize="15sp"
+        android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="@+id/guideline14"
         app:layout_constraintTop_toTopOf="@+id/Size"/>
 
@@ -188,6 +210,8 @@
         android:layout_marginLeft="8dp"
         android:layout_marginTop="0dp"
         android:text="NULL"
+        android:textSize="15sp"
+        android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="@+id/guideline16"
         app:layout_constraintTop_toTopOf="@+id/textView23"/>
 
@@ -195,14 +219,16 @@
         android:id="@+id/textView25"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="24dp"
         android:text="Sq Ft :"
         android:textColor="@color/colorPrimary"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView19"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="16dp"
         app:layout_constraintVertical_bias="0.0"/>
 
     <TextView
@@ -212,6 +238,8 @@
         android:layout_marginLeft="8dp"
         android:layout_marginTop="0dp"
         android:text="NULL"
+        android:textSize="15sp"
+        android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="@+id/guideline15"
         app:layout_constraintTop_toTopOf="@+id/textView25"/>
 
@@ -223,6 +251,8 @@
         android:layout_marginTop="0dp"
         android:text="Eff Year Built :"
         android:textColor="@color/colorPrimary"
+        android:textSize="15sp"
+        android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="@+id/guideline14"
         app:layout_constraintTop_toTopOf="@+id/Improv_SqFt"/>
 
@@ -233,6 +263,8 @@
         android:layout_marginLeft="8dp"
         android:layout_marginTop="0dp"
         android:text="NULL"
+        android:textSize="15sp"
+        android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="@+id/guideline16"
         app:layout_constraintTop_toTopOf="@+id/textView27"/>
 
