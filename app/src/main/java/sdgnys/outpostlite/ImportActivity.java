@@ -100,6 +100,8 @@ public class ImportActivity extends AppCompatActivity {
 				
 				setStatus("Successfully finished!");
 				showCheckmark();
+				
+				database.printDatabase(ParcelDataTable.TABLE_NAME);
 			}
 		});
 	}
@@ -108,7 +110,17 @@ public class ImportActivity extends AppCompatActivity {
 	private void fillDatabase(Database database, ArrayList<HashMap<String, Object>> parcels) {
 		int XML_LOCATION = 0;
 		for (HashMap<String, Object> parcel : parcels) {
+			// Update how far along we are in this process.
 			setPercentLoaded(((float) XML_LOCATION) / parcels.size());
+			
+			// We need to get a string that contains all of the owner names.
+			String OwnerNames = "";
+			ArrayList<HashMap<String, Object>> ownerList =
+					(ArrayList<HashMap<String, Object>>) ((HashMap<String, Object>) parcel.get("Owners")).get("Owner");
+			for (HashMap<String, Object> ownerMap : ownerList)
+				OwnerNames += ownerMap.get("Name") + ",";
+			
+			// Finally, add the record to the database.
 			database.addRecord(
 					new ParcelDataTable(),
 					(String) parcel.get("SWIS"),
@@ -120,6 +132,7 @@ public class ImportActivity extends AppCompatActivity {
 					(String) ((HashMap<String, Object>) parcel.get("Location")).get("Loc_Muni_Name"),
 					(String) ((HashMap<String, Object>) parcel.get("Assessment")).get("TotalAV"),
 					(String) ((HashMap<String, Object>) parcel.get("Assessment")).get("LandAV"),
+					OwnerNames,
 					XML_LOCATION + ""
 					);
 			XML_LOCATION ++;

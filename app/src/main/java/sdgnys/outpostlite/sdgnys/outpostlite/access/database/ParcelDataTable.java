@@ -20,6 +20,7 @@ public class ParcelDataTable extends DataTable {
 			"Loc_Muni_Name",
 			"TotalAV",
 			"LandAV",
+			"OwnerNames",
 			"XML_LOCATION"
 	},
 	columnDataTypes = new String[] {
@@ -32,6 +33,7 @@ public class ParcelDataTable extends DataTable {
 			"varchar(30)",
 			"integer",
 			"integer",
+			"varchar(25)",
 			"integer"
 	};
 	

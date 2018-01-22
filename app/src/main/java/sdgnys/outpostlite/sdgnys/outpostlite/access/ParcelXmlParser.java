@@ -47,7 +47,7 @@ public class ParcelXmlParser {
 	
 	// Put all tags that repeat and belong in a list in here.
 	private final String[] LIST_TAGS = {
-			"Improvement"
+			"Improvement", "Owner"
 	};
 	
 	public ParcelXmlParser(StorageAccess storage) {

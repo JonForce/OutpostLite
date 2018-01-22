@@ -19,14 +19,16 @@ import sdgnys.outpostlite.sdgnys.outpostlite.access.StorageAccess;
 import sdgnys.outpostlite.sdgnys.outpostlite.access.database.Database;
 import sdgnys.outpostlite.sdgnys.outpostlite.access.database.ImageDataTable;
 
-import static sdgnys.outpostlite.search.RowData.*;
+import static android.content.res.Configuration.ORIENTATION_LANDSCAPE;
+import static sdgnys.outpostlite.search.SearchResult.OwnerNames;
+import static sdgnys.outpostlite.search.SearchTerms.*;
 
 /**
  * This class is an adapter that will allow search results to be displayed in a ListView.
  *
  * Created by jforce on 8/10/2017.
  */
-abstract class SearchResultsAdapter extends ArrayAdapter<RowData> {
+abstract class SearchResultsAdapter extends ArrayAdapter<SearchResult> {
 	
 	protected abstract void onImagePress(ImageView view);
 	
@@ -35,22 +37,28 @@ abstract class SearchResultsAdapter extends ArrayAdapter<RowData> {
 	
 	private SearchActivity activity;
 	private int layout;
-	private ArrayList<RowData> data;
+	private ArrayList<SearchResult> data;
 	private StorageAccess storage;
 	private Database database;
+	private int ownerNameCharacterLimit;
 	
 	/** Create the tool for displaying search results in a ListView.
 	 * @param activity The context of the Activity.
 	 * @param layout The layout that will be used for each row in the results.
 	 * @param data The search result data that will be displayed in the ListView.
 	 */
-	public SearchResultsAdapter(SearchActivity activity, int layout, ArrayList<RowData> data) {
+	public SearchResultsAdapter(SearchActivity activity, int layout, ArrayList<SearchResult> data) {
 		super(activity, layout, data);
 		this.storage = new StorageAccess(activity);
 		this.activity = activity;
 		this.layout = layout;
 		this.data = data;
 		this.database = new Database(activity);
+		
+		if (activity.getResources().getConfiguration().orientation == ORIENTATION_LANDSCAPE)
+			ownerNameCharacterLimit = 45;
+		else
+			ownerNameCharacterLimit = 18;
 	}
 	
 	/** We overwrite this method to provide a custom implementation for how views will
@@ -76,6 +84,8 @@ abstract class SearchResultsAdapter extends ArrayAdapter<RowData> {
 			holder.Loc_Muni_Name = (TextView)row.findViewById(R.id.LOC_MUNI_NAME);
 			holder.viewButton = (Button)row.findViewById(R.id.viewButton);
 			holder.image = (ImageView)row.findViewById(R.id.thumbnail);
+			holder.Owner0 = (TextView)row.findViewById(R.id.Owner0);
+			holder.Owner1 = (TextView)row.findViewById(R.id.Owner1);
 			
 			row.setTag(holder);
 		} else {
@@ -83,23 +93,31 @@ abstract class SearchResultsAdapter extends ArrayAdapter<RowData> {
 		}
 		
 		// Get the search data for the row they're requesting.
-		RowData rowData = data.get(position);
+		SearchResult searchResult = data.get(position);
 		
 		// Update the Views to contain the search data.
-		holder.SWIS.setText(rowData.values[SWIS]);
-		holder.PRINT_KEY.setText(rowData.values[PRINT_KEY]);
-		holder.Loc_St_Nbr.setText(rowData.values[Loc_St_Nbr]);
-		holder.Street.setText(rowData.values[Street]);
-		holder.Loc_Muni_Name.setText(rowData.values[Loc_Muni_Name]);
+		holder.SWIS.setText(searchResult.values[SWIS]);
+		holder.PRINT_KEY.setText(searchResult.values[PRINT_KEY]);
+		holder.Loc_St_Nbr.setText(searchResult.values[Loc_St_Nbr]);
+		holder.Street.setText(searchResult.values[Street]);
+		holder.Loc_Muni_Name.setText(searchResult.values[Loc_Muni_Name]);
+		// If we have owner names,
+		if (searchResult.values[OwnerNames] != null && searchResult.values[OwnerNames].length() > 0) {
+			// Put them on the screen.
+			String[] split = searchResult.values[OwnerNames].split(",");
+			holder.Owner0.setText(limit(split[0]));
+			if (split.length > 1)
+				holder.Owner1.setText(limit(split[1]));
+		}
 		
 		// Load the thumbnail and apply it to the image on screen.
 		
 		// Get the sequence # for the default image.
 		String SEQUENCE =
-				getSequence(rowData.values[SWIS], rowData.values[PRINT_KEY], rowData.values[PARCEL_ID]) + "";
+				getSequence(searchResult.values[SWIS], searchResult.values[PRINT_KEY], searchResult.values[PARCEL_ID]) + "";
 		// Get the image file of the default image we want to display.
 		File imageFile = storage.getDefaultImage(
-				rowData.values[SWIS], rowData.values[PRINT_KEY], rowData.values[SBL], rowData.values[PARCEL_ID], SEQUENCE);
+				searchResult.values[SWIS], searchResult.values[PRINT_KEY], searchResult.values[SBL], searchResult.values[PARCEL_ID], SEQUENCE);
 		// If we managed to do this successfully,
 		if (imageFile != null && imageFile.exists()) {
 			Bitmap map = storage.getImageBitmap(imageFile);
@@ -153,8 +171,12 @@ abstract class SearchResultsAdapter extends ArrayAdapter<RowData> {
 	
 	/** A simple object that contains the Views that need to be populated with search data. */
 	static class ViewHolder {
-		TextView SWIS, PRINT_KEY, Loc_St_Nbr, Street, Loc_Muni_Name;
+		TextView SWIS, PRINT_KEY, Loc_St_Nbr, Street, Loc_Muni_Name, Owner0, Owner1;
 		Button viewButton;
 		ImageView image;
+	}
+	
+	private String limit(String source) {
+		return source.substring(0, Math.min(ownerNameCharacterLimit, source.length() - 1));
 	}
 }

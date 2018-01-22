@@ -14,14 +14,14 @@ import sdgnys.outpostlite.sdgnys.outpostlite.access.database.ParcelDataTable;
  */
 public class Search {
 	
-	private ArrayList<RowData> results;
+	private ArrayList<SearchResult> results;
 	
 	/** Creating a search will query the database given the specified search terms. The search will
 	 * execute immediately on object creation.
 	 * @param context The Activity's context.
 	 * @param searchTerms The terms to search by.
 	 */
-	public Search(Context context, RowData searchTerms, boolean nameAscending, boolean numberAscending) {
+	public Search(Context context, SearchTerms searchTerms, boolean nameAscending, boolean numberAscending) {
 		this.results = new ArrayList<>();
 		
 		// Establish a connection to the database.
@@ -34,7 +34,7 @@ public class Search {
 	}
 	
 	/** @return the results of the search. The search is automatically executed on object creation. */
-	public ArrayList<RowData> getResults() {
+	public ArrayList<SearchResult> getResults() {
 		return results;
 	}
 	
@@ -47,14 +47,14 @@ public class Search {
 		// While there are still more results to read,
 		while (!cursor.isAfterLast()) {
 			// Data represents the data for this particular search result.
-			RowData data = new RowData();
+			SearchResult data = new SearchResult();
 			// For every column returned by the search,
 			for (int column = 0; column < cursor.getColumnCount(); column ++) {
 				// Get the column name.
 				String columnName = cursor.getColumnName(column);
 				// Find a field in data that matches the column name,
-				for (int field = 0; field < RowData.fields.length; field ++) {
-					if (columnName.equals(RowData.fields[field]))
+				for (int field = 0; field < SearchResult.fields.length; field ++) {
+					if (columnName.equals(SearchResult.fields[field]))
 						// And put the search data into data.
 						data.values[field] = cursor.getString(column);
 				}
@@ -66,7 +66,7 @@ public class Search {
 	}
 	
 	/** @return a query that will pull all data from the database that matches the search terms. */
-	private String getQuery(RowData searchTerms, boolean nameAscending, boolean numberAscending) {
+	private String getQuery(SearchTerms searchTerms, boolean nameAscending, boolean numberAscending) {
 		// Define the query as starting off with the basic shit.
 		String query = "SELECT * FROM " + ParcelDataTable.TABLE_NAME;
 		// This variable may seem tricky, but I'm about to break it down for you.
@@ -75,9 +75,9 @@ public class Search {
 		boolean isFirst = true;
 		
 		// For every field that could possibly be searched,
-		for (int field = 0; field < RowData.fields.length; field ++) {
+		for (int field = 0; field < SearchTerms.fields.length; field ++) {
 			// Get the name of the field.
-			String fieldName = RowData.fields[field];
+			String fieldName = SearchTerms.fields[field];
 			// If they have a search term specified for that field,
 			if (searchTerms.values[field] != null && !searchTerms.values[field].equals("")) {
 				// We have to add it to the query.
@@ -91,7 +91,9 @@ public class Search {
 				
 				// Add the search term to the query. (The end part makes it case insensitive)
 				
-				if (fieldName.equals("Street"))
+				if (fieldName.equals("OwnerFirstName") || fieldName.equals("OwnerLastName")) {
+					query += "OwnerNames LIKE '%" + searchTerms.values[field] + "%' COLLATE NOCASE";
+				} else if (fieldName.equals("Street"))
 					// Street names need to use a loose comparison.
 					query += fieldName + " LIKE '%" + searchTerms.values[field] + "%' COLLATE NOCASE";
 				else

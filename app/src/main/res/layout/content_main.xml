@@ -9,6 +9,20 @@
                                              tools:context="sdgnys.outpostlite.MainActivity"
                                              tools:showIn="@layout/activity_main">
 
+    <EditText
+        android:id="@+id/OwnerLastName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="7dp"
+        android:ems="10"
+        android:hint="Last Name"
+        android:inputType="textPersonName"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/OwnerFirstName"/>
+
     <Button
         android:id="@+id/importButton"
         android:layout_width="wrap_content"
@@ -41,12 +55,12 @@
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
         android:visibility="visible"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/street"
-        app:srcCompat="@android:drawable/ic_media_play"/>
+        app:srcCompat="@android:drawable/ic_media_play"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/OwnerLastName"/>
 
     <TextView
         android:id="@+id/title"
@@ -154,5 +168,19 @@
         app:layout_constraintTop_toTopOf="@+id/textView36"
         android:layout_marginRight="32dp"
         app:layout_constraintRight_toRightOf="@+id/PRINT_KEY"/>
+
+    <EditText
+        android:id="@+id/OwnerFirstName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="First Name"
+        android:inputType="textPersonName"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/street"/>
 
 </android.support.constraint.ConstraintLayout>

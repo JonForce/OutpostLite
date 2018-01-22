@@ -18,8 +18,7 @@ import sdgnys.outpostlite.ViewParcel;
 import sdgnys.outpostlite.sdgnys.outpostlite.access.ParcelXmlParser;
 import sdgnys.outpostlite.sdgnys.outpostlite.access.StorageAccess;
 
-import static sdgnys.outpostlite.search.RowData.*;
-import static sdgnys.outpostlite.search.RowData.PRINT_KEY;
+import static sdgnys.outpostlite.search.SearchTerms.*;
 
 /** This is the activity that does the searching through the SQLite database
  * and is also responsible for displaying the results of the search.
@@ -29,13 +28,13 @@ import static sdgnys.outpostlite.search.RowData.PRINT_KEY;
  */
 public class SearchActivity extends AppCompatActivity {
 	
-	private ArrayList<RowData> searchResults;
+	private ArrayList<SearchResult> searchResults;
 	private ArrayList<HashMap<String, Object>> parcelData;
 	private SearchResultsAdapter adapter;
 	private boolean
 			numberSortAscending = true,
 			nameSortAscending = true;
-	private String PRINT_KEY, streetNumber, streetName;
+	private String PRINT_KEY, streetNumber, streetName, OwnerFirstName, OwnerLastName;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +45,8 @@ public class SearchActivity extends AppCompatActivity {
 		PRINT_KEY = getIntent().getStringExtra("PRINT_KEY");
 		streetNumber = getIntent().getStringExtra("streetNumber");
 		streetName = getIntent().getStringExtra("streetName");
+		OwnerFirstName = getIntent().getStringExtra("OwnerFirstName");
+		OwnerLastName = getIntent().getStringExtra("OwnerLastName");
 		
 		// Pull all of the parcel data from disk. This is expensive.
 		ParcelXmlParser parser = new ParcelXmlParser(new StorageAccess(this));
@@ -81,7 +82,7 @@ public class SearchActivity extends AppCompatActivity {
 		Intent intent = new Intent(SearchActivity.this, ViewParcel.class);
 		
 		int XML_LOCATION =
-				Integer.parseInt(searchResults.get(position).values[RowData.XML_LOCATION]);
+				Integer.parseInt(searchResults.get(position).values[SearchTerms.XML_LOCATION]);
 		HashMap<String, Object> parcel = parcelData.get(XML_LOCATION);
 		
 		intent.putExtra("parcelData", parcel);
@@ -121,10 +122,12 @@ public class SearchActivity extends AppCompatActivity {
 	
 	private void search() {
 		// Populate the search terms into an object to be sent to the search program.
-		RowData searchTerms = new RowData();
-		searchTerms.values[RowData.PRINT_KEY] = PRINT_KEY;
+		SearchTerms searchTerms = new SearchTerms();
+		searchTerms.values[SearchTerms.PRINT_KEY] = PRINT_KEY;
 		searchTerms.values[Loc_St_Nbr] = streetNumber;
 		searchTerms.values[Street] = streetName;
+		searchTerms.values[SearchTerms.OwnerFirstName] = OwnerFirstName;
+		searchTerms.values[SearchTerms.OwnerLastName] = OwnerLastName;
 		
 		// Launch a search with the specified terms and get the results.
 		searchResults = new Search(this, searchTerms, nameSortAscending, numberSortAscending).getResults();

@@ -86,14 +86,14 @@
         android:layout_height="wrap_content"
         android:id="@+id/guideline2"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.34"/>
+        app:layout_constraintGuide_percent="0.47"/>
 
     <android.support.constraint.Guideline
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/guideline3"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.56"/>
+        app:layout_constraintGuide_percent="0.68"/>
 
     <android.support.constraint.Guideline
         android:layout_width="wrap_content"
@@ -119,7 +119,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/guideline23"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.48"/>
+        app:layout_constraintGuide_percent="0.26"/>
 
     <ImageView
         android:id="@+id/thumbnail"
@@ -132,4 +132,24 @@
         app:layout_constraintLeft_toLeftOf="@+id/guideline3"
         app:layout_constraintTop_toTopOf="@+id/viewButton"
         app:srcCompat="@android:drawable/screen_background_dark_transparent"/>
+
+    <TextView
+        android:id="@+id/Owner0"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="0dp"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="@+id/guideline23"
+        app:layout_constraintTop_toTopOf="@+id/LOC_ST_NAME"/>
+
+    <TextView
+        android:id="@+id/Owner1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="0dp"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="@+id/guideline23"
+        app:layout_constraintTop_toBottomOf="@+id/Street"/>
 </android.support.constraint.ConstraintLayout>

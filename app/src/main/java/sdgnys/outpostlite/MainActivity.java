@@ -138,13 +138,17 @@ public class MainActivity extends AppCompatActivity {
 	    String
 			    PRINT_KEY = getInputText(R.id.PRINT_KEY),
 	            streetNumber = getInputText(R.id.streetNumber),
-	            streetName = getInputText(R.id.street);
+	            streetName = getInputText(R.id.street),
+	            OwnerFirstName = getInputText(R.id.OwnerFirstName),
+	            OwnerLastName = getInputText(R.id.OwnerLastName);
 		
 	    // Start the search activity with all of the parameters in the intent.
 	    Intent intent = new Intent(this, SearchActivity.class);
 	    intent.putExtra("PRINT_KEY", PRINT_KEY);
 	    intent.putExtra("streetNumber", streetNumber);
 	    intent.putExtra("streetName", streetName);
+	    intent.putExtra("OwnerFirstName", OwnerFirstName);
+	    intent.putExtra("OwnerLastName", OwnerLastName);
 	    startActivity(intent);
     }
     
