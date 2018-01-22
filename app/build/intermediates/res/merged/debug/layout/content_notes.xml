@@ -99,7 +99,9 @@
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
         android:text="SWIS : "
+        android:textColor="@color/colorPrimaryDark"
         android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
@@ -110,7 +112,9 @@
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
         android:text="SBL :"
+        android:textColor="@color/colorPrimaryDark"
         android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="@+id/guideline17"
         app:layout_constraintTop_toTopOf="parent"/>
 
@@ -121,7 +125,9 @@
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
         android:text="Parcel ID :"
+        android:textColor="@color/colorPrimaryDark"
         android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3"/>
 
@@ -140,6 +146,7 @@
         android:layout_marginTop="0dp"
         android:text="TextView"
         android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintLeft_toRightOf="@+id/textView3"
         app:layout_constraintTop_toTopOf="@+id/textView3"/>
 
@@ -151,6 +158,7 @@
         android:layout_marginTop="0dp"
         android:text="TextView"
         android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintLeft_toRightOf="@+id/textView4"
         app:layout_constraintTop_toTopOf="@+id/textView4"/>
 
@@ -162,6 +170,7 @@
         android:layout_marginTop="0dp"
         android:text="TextView"
         android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintLeft_toRightOf="@+id/textView6"
         app:layout_constraintTop_toTopOf="@+id/textView6"/>
 
@@ -172,9 +181,11 @@
         android:layout_marginLeft="8dp"
         android:layout_marginTop="0dp"
         android:text="Address :"
+        android:textColor="@color/colorPrimaryDark"
         android:textSize="18sp"
-        app:layout_constraintTop_toTopOf="@+id/PARCEL_ID"
-        app:layout_constraintLeft_toLeftOf="@+id/guideline17"/>
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="@+id/guideline17"
+        app:layout_constraintTop_toTopOf="@+id/PARCEL_ID"/>
 
     <TextView
         android:id="@+id/address"
@@ -184,6 +195,7 @@
         android:layout_marginTop="0dp"
         android:text="TextView"
         android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintLeft_toRightOf="@+id/textView13"
         app:layout_constraintTop_toTopOf="@+id/textView13"/>
 
