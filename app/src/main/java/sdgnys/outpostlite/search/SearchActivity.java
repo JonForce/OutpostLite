@@ -82,7 +82,7 @@ public class SearchActivity extends AppCompatActivity {
 		Intent intent = new Intent(SearchActivity.this, ViewParcel.class);
 		
 		int XML_LOCATION =
-				Integer.parseInt(searchResults.get(position).values[SearchTerms.XML_LOCATION]);
+				Integer.parseInt(searchResults.get(position).values[SearchResult.XML_LOCATION]);
 		HashMap<String, Object> parcel = parcelData.get(XML_LOCATION);
 		
 		intent.putExtra("parcelData", parcel);
